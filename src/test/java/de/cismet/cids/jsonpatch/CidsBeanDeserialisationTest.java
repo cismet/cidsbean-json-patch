@@ -1,9 +1,8 @@
-package de.cismet.cids.jsponpatch;
+package de.cismet.cids.jsonpatch;
 
+import com.github.fge.jackson.jsonpointer.JsonPointer;
 import de.cismet.cids.dynamics.CidsBean;
-import java.io.IOException;
 import org.apache.commons.io.IOUtils;
-import org.openide.util.Exceptions;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -16,6 +15,7 @@ import org.testng.log4testng.Logger;
  *
  * @author Pascal Dihé <pascal.dihe@cismet.de>
  */
+@Test
 public class CidsBeanDeserialisationTest {
     
     protected final static Logger LOGGER = Logger.getLogger(CidsBeanDeserialisationTest.class);
@@ -49,8 +49,22 @@ public class CidsBeanDeserialisationTest {
         try {
             final String resource = IOUtils.toString(this.getClass().getResourceAsStream("resource.json"));
             final CidsBean cidsBean = CidsBean.createNewCidsBeanFromJSON(true, resource);
+            
             assertEquals((long)cidsBean.getPrimaryKeyValue(), 11973);
+            
             assertEquals(cidsBean.getProperty("representation[1].type.name"), "original data");
+            
+            assertEquals("representation[0].type.name", 
+                    CidsBeanJsonPatchUtils.getInstance().JsonPointerToCidsBeanPointer(
+                            new JsonPointer("/representation/0/type/name")));
+            
+            assertEquals(cidsBean.getProperty("representation[1].type.name"),
+                    cidsBean.getProperty(CidsBeanJsonPatchUtils.getInstance().JsonPointerToCidsBeanPointer(
+                            new JsonPointer("/representation/1/type/name"))));
+            
+            LOGGER.debug(CidsBeanJsonPatchUtils.getInstance().JsonPointerToCidsBeanPointer(
+                            new JsonPointer("/")));
+
         } catch (Exception ex) {
             
             LOGGER.error(ex.getMessage(), ex);
@@ -64,6 +78,9 @@ public class CidsBeanDeserialisationTest {
             cidsBeanDeserialisationTest.createNewCidsBeanFromJSON();
         } catch (Exception ex) {
            ex.printStackTrace();
+           System.exit(1);
         }
+        
+        System.exit(0);
     }
 }

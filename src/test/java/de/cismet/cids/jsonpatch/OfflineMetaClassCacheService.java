@@ -1,4 +1,4 @@
-package de.cismet.cids.jsponpatch;
+package de.cismet.cids.jsonpatch;
 
 import Sirius.server.middleware.types.MetaClass;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -37,7 +37,7 @@ public class OfflineMetaClassCacheService implements MetaClassCacheService {
             final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
             URL resources;
             try {
-                resources = classLoader.getResource("de/cismet/cids/jsponpatch/classes/");
+                resources = classLoader.getResource("de/cismet/cids/jsonpatch/classes/");
             } catch (Exception ex) {
                 LOGGER.error("could not locate meta class json files: " + ex.getMessage(), ex);
                 throw ex;
@@ -45,7 +45,7 @@ public class OfflineMetaClassCacheService implements MetaClassCacheService {
 
             final Scanner scanner = new Scanner((InputStream) resources.getContent()).useDelimiter("\\n");
             while (scanner.hasNext()) {
-                final String jsonFile = "de/cismet/cids/jsponpatch/classes/" + scanner.next();
+                final String jsonFile = "de/cismet/cids/jsonpatch/classes/" + scanner.next();
                 LOGGER.info("loading cids class from json file " + jsonFile);
                 try {
                     
