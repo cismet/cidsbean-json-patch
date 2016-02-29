@@ -17,6 +17,8 @@ import com.github.fge.jsonpatch.JsonPatchException;
 
 import java.io.IOException;
 
+import java.util.ResourceBundle;
+
 import de.cismet.cids.dynamics.CidsBean;
 
 import de.cismet.cids.jsonpatch.CidsBeanJsonPatchUtils;
@@ -37,6 +39,10 @@ import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
  */
 public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperation implements CidsBeanPatchOperation {
 
+    //~ Static fields/initializers ---------------------------------------------
+
+    protected static final ResourceBundle RESOURCE_BUNDLE = CidsBeanJsonPatchUtils.getInstance().getResourceBundle();
+
     //~ Constructors -----------------------------------------------------------
 
     /**
@@ -55,17 +61,7 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
 
     @Override
     public CidsBean apply(final CidsBean cidsBean) throws JsonPatchException {
-        // does not work! cids bean json serialisation broken
-        // final JsonNode node = CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().valueToTree(cidsBean);
-
-        final String json = cidsBean.toJSONString(false);
-        final JsonNode node;
-        try {
-            node = CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().readTree(json);
-        } catch (IOException ex) {
-            throw new JsonPatchException("cannot serialize cids bean", ex);
-        }
-
+        final JsonNode node = CidsBeanJsonPatchUtils.getInstance().cidsBeanToJsonNode(cidsBean);
         final JsonNode tested = super.apply(node);
 
         if (tested != null) {
@@ -74,7 +70,7 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
             return null;
         }
 
-//        final String cidsBeanPointer = CidsBeanJsonPatchUtils.getInstance().JsonPointerToCidsBeanPointer(this.path);
+//        final String cidsBeanPointer = CidsBeanJsonPatchUtils.getInstance().jsonPointerToCidsBeanPointer(this.path);
 //        final Object tested;
 //        if(cidsBeanPointer != null && !cidsBeanPointer.isEmpty()) {
 //            tested =  cidsBean.getProperty(cidsBeanPointer);
