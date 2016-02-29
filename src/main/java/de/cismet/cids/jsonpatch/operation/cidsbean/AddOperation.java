@@ -187,15 +187,11 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
         }
 
         if (List.class.isAssignableFrom(parentObject.getClass())) {
-            if (UTILS.isCidsBeanArray(this.value)) {
-                if (LOGGER.isDebugEnabled()) {
-                    LOGGER.debug("performing add to array " + this.path.toString());
-                }
-                this.addToArray((List)parentObject);
-                return cidsBean;
-            } else {
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.parentNotArray"));
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("performing add to array " + this.path.toString());
             }
+            this.addToArray((List)parentObject);
+            return cidsBean;
         } else if (CidsBean.class.isAssignableFrom(parentObject.getClass())) {
             this.addToObject((CidsBean)parentObject);
             return cidsBean;
@@ -216,7 +212,6 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
         if (token.getToken().equals(LAST_ARRAY_ELEMENT)) {
             if (UTILS.isCidsBeanArray(value)) {
                 final List<CidsBean> beanList = (List<CidsBean>)UTILS.deserializeAndVerifyCidsBean(this.value);
-
                 if (this.overwrite) {
                     parentList.replaceAll(new UnaryOperator<CidsBean>() {
 

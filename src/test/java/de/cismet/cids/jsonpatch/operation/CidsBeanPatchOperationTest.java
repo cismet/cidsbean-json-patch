@@ -22,7 +22,6 @@ package de.cismet.cids.jsonpatch.operation;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.github.fge.jackson.JsonLoader;
-import com.github.fge.jsonpatch.JsonPatchException;
 import com.google.common.collect.Lists;
 import de.cismet.cids.dynamics.CidsBean;
 import de.cismet.cids.jsonpatch.CidsBeanJsonPatchUtils;
@@ -32,12 +31,10 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-import org.openide.util.Exceptions;
 
 import static org.testng.Assert.*;
 import org.testng.log4testng.Logger;
 
-@Test
 public abstract class CidsBeanPatchOperationTest
 {
     protected final JsonNode errors;

@@ -17,13 +17,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.ValueNode;
 
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jackson.jsonpointer.TokenResolver;
 import com.github.fge.jsonpatch.JsonPatchException;
-import com.github.fge.jsonpatch.operation.AddOperation;
 import com.github.fge.jsonpatch.operation.CopyOperation;
 import com.github.fge.jsonpatch.operation.MoveOperation;
 import com.github.fge.jsonpatch.operation.RemoveOperation;
@@ -31,7 +29,6 @@ import com.github.fge.jsonpatch.operation.ReplaceOperation;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 
 import java.io.IOException;
@@ -47,6 +44,7 @@ import de.cismet.cids.dynamics.CidsBeanInfo;
 import de.cismet.cids.dynamics.CidsBeanJsonDeserializer;
 import de.cismet.cids.dynamics.CidsBeanJsonSerializer;
 
+import de.cismet.cids.jsonpatch.operation.cidsbean.AddOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.TestOperation;
 
 /**
