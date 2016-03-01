@@ -1,8 +1,32 @@
 {
-    "errors": [{
+    "errors": [
+        {
             "op": {
-                "op": "add",
-                "path": "/tags/-1",
+                "op": "replace",
+                "path": "/taggroup",
+                "value": {
+                    "$self": "/SWITCHON.TAGGROUP/145",
+                    "id": 145,
+                    "name": "no limitations",
+                    "description": "no Limitations"
+                }
+            },
+            "bean": {
+                "$self": "/SWITCHON.TAG/1534",
+                "id": 1534,
+                "name": "Open Datasets",
+                "taggroup": {
+                    "$self": "/SWITCHON.TAGGROUP/146",
+                    "id": 146,
+                    "name": "access limitations",
+                    "description": "Limitations on public access in accordance to Article 13 of Directive 2007/2/EC (fixed group with tags from a standard codelist)."
+                }
+            },
+            "message": "jsonPatch.valueNoNewBean"
+        }, {
+            "op": {
+                "op": "replace",
+                "path": "/tags/6",
                 "value": {
                     "$ref": "/SWITCHON.TAG/666"
                 }
@@ -405,22 +429,7 @@
             "message": "jsonPatch.noSuchIndex"
         }, {
             "op": {
-                "op": "add",
-                "path": "/id",
-                "value": 6666
-            },
-            "bean": {
-                "$self": "/SWITCHON.TAG/1534",
-                "id": 1534,
-                "name": "Open Datasets",
-                "taggroup": {
-                    "$ref": "/SWITCHON.TAGGROUP/149"
-                }
-            },
-            "message": "jsonPatch.propertyNotEmpty"
-        }, {
-            "op": {
-                "op": "add",
+                "op": "replace",
                 "path": "/name",
                 "value": 31337
             },
@@ -435,7 +444,7 @@
             "message": "jsonPatch.setPropertyFailed"
         }, {
             "op": {
-                "op": "add",
+                "op": "replace",
                 "path": "/name",
                 "value": {
                     "name": 31337
@@ -452,7 +461,7 @@
             "message": "jsonPatch.invalidValue"
         }, {
             "op": {
-                "op": "add",
+                "op": "replace",
                 "path": "/taggroup/1",
                 "value": {
                     "$ref": "/SWITCHON.TAGGROUP/75"
@@ -473,8 +482,8 @@
     "ops": [
         {
             "op": {
-                "op": "add",
-                "path": "/tags/-",
+                "op": "replace",
+                "path": "/tags/3",
                 "value": {
                     "$ref": "/SWITCHON.TAG/666"
                 }
@@ -995,17 +1004,6 @@
                         },
                         "description": "n/a"
                     }, {
-                        "$self": "/SWITCHON.TAG/1407",
-                        "id": 1407,
-                        "name": "Flux, precipitation",
-                        "taggroup": {
-                            "$self": "/SWITCHON.TAGGROUP/169",
-                            "id": 169,
-                            "name": "keywords - X-CUAHSI",
-                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
-                        },
-                        "description": "n/a"
-                    }, {
                         "$self": "/SWITCHON.TAG/666",
                         "id": 666,
                         "name": null,
@@ -1279,7 +1277,7 @@
         },
         {
             "op": {
-                "op": "add",
+                "op": "replace",
                 "path": "/publicationdate",
                 "value": 1456139550080
             },
@@ -2076,7 +2074,7 @@
         },
         {
             "op": {
-                "op": "add",
+                "op": "replace",
                 "path": "/representation/1/description",
                 "value": "no description"
             },
@@ -2870,6 +2868,181 @@
                 },
                 "publicationdate": null
             }
+        }, {
+            "op": {
+                "op": "replace",
+                "path": "/id",
+                "value": 6666
+            },
+            "bean": {
+                "$self": "/SWITCHON.TAG/1534",
+                "id": 1534,
+                "name": "Open Datasets",
+                "taggroup": {
+                    "$ref": "/SWITCHON.TAGGROUP/149"
+                }
+            },
+            "expected": {
+                "$self": "/SWITCHON.TAG/6666",
+                "id": 6666,
+                "name": "Open Datasets",
+                "taggroup": {
+                    "$ref": "/SWITCHON.TAGGROUP/149"
+                }
+            }
+        }, {
+            "op": {
+                "op": "replace",
+                "path": "/taggroup",
+                "value": {
+                    "$self": "/SWITCHON.TAGGROUP/-1",
+                    "id": -1,
+                    "name": "no limitations",
+                    "description": "no Limitations"
+                }
+            },
+            "bean": {
+                "$self": "/SWITCHON.TAG/1534",
+                "id": 1534,
+                "name": "Open Datasets",
+                "taggroup": {
+                    "$self": "/SWITCHON.TAGGROUP/146",
+                    "id": 146,
+                    "name": "access limitations",
+                    "description": "Limitations on public access in accordance to Article 13 of Directive 2007/2/EC (fixed group with tags from a standard codelist)."
+                }
+            },
+            "expected": {
+                "$self": "/SWITCHON.TAG/1534",
+                "id": 1534,
+                "name": "Open Datasets",
+                "taggroup": {
+                    "$self": "/SWITCHON.TAGGROUP/-1",
+                    "id": -1,
+                    "name": "no limitations",
+                    "description": "no Limitations"
+                }
+            }
+        }, {
+            "op": {
+                "op": "replace",
+                "path": "/tags/0",
+                "value": {
+                    "$self": "/SWITCHON.TAG/-1",
+                    "id": -1,
+                    "name": "Datasets",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/145",
+                        "id": 145,
+                        "name": "no limitations",
+                        "description": "no Limitations"
+                    }
+                }
+            },
+            "bean": {
+                "$self": "/SWITCHON.METADATA/14458",
+                "id": 14458,
+                "name": "Basic Lineage Meta-Data",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1534",
+                        "id": 1534,
+                        "name": "Open Datasets",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/145",
+                            "id": 145,
+                            "name": "no limitations",
+                            "description": "no Limitations"
+                        }
+                    }],
+                "description": "NO Data Lineage",
+                "contact": null,
+                "type": null,
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "standard": {
+                    "$self": "/SWITCHON.TAG/1387",
+                    "id": 1387,
+                    "name": "SWITCH-ON SIM",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/159",
+                        "id": 159,
+                        "name": "meta-data standard",
+                        "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                    },
+                    "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                },
+                "uuid": null,
+                "contentlocation": null,
+                "creationdate": 1456139550080,
+                "contenttype": null,
+                "content": null
+
+            },
+            "expected": {
+                "$self": "/SWITCHON.METADATA/14458",
+                "id": 14458,
+                "name": "Basic Lineage Meta-Data",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/-1",
+                        "id": -1,
+                        "name": "Datasets",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/145",
+                            "id": 145,
+                            "name": "no limitations",
+                            "description": "no Limitations"
+                        }
+                    }],
+                "description": "NO Data Lineage",
+                "contact": null,
+                "type": null,
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "standard": {
+                    "$self": "/SWITCHON.TAG/1387",
+                    "id": 1387,
+                    "name": "SWITCH-ON SIM",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/159",
+                        "id": 159,
+                        "name": "meta-data standard",
+                        "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                    },
+                    "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                },
+                "uuid": null,
+                "contentlocation": null,
+                "creationdate": 1456139550080,
+                "contenttype": null,
+                "content": null
+            }
         }
+
+
+
+
+
+
+
     ]
 }
