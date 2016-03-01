@@ -315,13 +315,11 @@ public class CidsBeanJsonPatchUtils {
             } else {
                 final CidsBeanInfo cidsBeanInfo = new CidsBeanInfo(value.get(
                             CidsBeanInfo.JSON_CIDS_OBJECT_KEY_IDENTIFIER).textValue());
-                if (!cidsBeanInfo.getObjectKey().equals("-1")) {
-                    throw new JsonPatchException(resourceBundle.getString("jsonPatch.valueNoNewBean"));
-                } else {
-                    final CidsBean cidsBean = this.jsonNodeToCidsBean(value);
+                final CidsBean cidsBean = this.jsonNodeToCidsBean(value);
+                if (cidsBeanInfo.getObjectKey().equals("-1")) {
                     this.applyCidsBeanUpdateStatus(cidsBean, false);
-                    return cidsBean;
                 }
+                return cidsBean;
             }
         } else if (this.isCidsBeanArray(value)) {
             final List<CidsBean> beanList = new ArrayList<CidsBean>();
