@@ -127,6 +127,7 @@ public abstract class CidsBeanPatchOperationTest
         final CidsBean actual;
         try {
             actual = op.apply(cidsBean);
+           
             assertTrue(actual.equals(expected));
         } catch (Exception ex) {
            LOGGER.error(ex.getMessage(), ex);

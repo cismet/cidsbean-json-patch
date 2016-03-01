@@ -49,6 +49,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -213,38 +214,30 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
             if (UTILS.isCidsBeanArray(value)) {
                 final List<CidsBean> beanList = (List<CidsBean>)UTILS.deserializeAndVerifyCidsBean(this.value);
                 if (this.overwrite) {
-                    parentList.replaceAll(new UnaryOperator<CidsBean>() {
-
-                            @Override
-                            public CidsBean apply(final CidsBean listCidsBean) {
-                                for (final CidsBean replacmentBean : beanList) {
-                                    if (replacmentBean.getCidsBeanInfo().getJsonObjectKey().equals(
-                                                    listCidsBean.getCidsBeanInfo().getJsonObjectKey())) {
-                                        return replacmentBean;
-                                    }
-                                }
-
-                                return listCidsBean;
+                    final ListIterator<CidsBean> listIterator = parentList.listIterator();
+                    while (listIterator.hasNext()) {
+                        final CidsBean listCidsBean = listIterator.next();
+                        for (final CidsBean replacmentBean : beanList) {
+                            if (replacmentBean.getCidsBeanInfo().getJsonObjectKey().equals(
+                                            listCidsBean.getCidsBeanInfo().getJsonObjectKey())) {
+                                listIterator.set(replacmentBean);
                             }
-                        });
+                        }
+                    }
                 } else {
                     parentList.addAll(beanList);
                 }
             } else if (UTILS.isCidsBean(value)) {
                 final CidsBean cidsBean = (CidsBean)UTILS.deserializeAndVerifyCidsBean(this.value);
                 if (this.overwrite) {
-                    parentList.replaceAll(new UnaryOperator<CidsBean>() {
-
-                            @Override
-                            public CidsBean apply(final CidsBean listCidsBean) {
-                                if (cidsBean.getCidsBeanInfo().getJsonObjectKey().equals(
-                                                listCidsBean.getCidsBeanInfo().getJsonObjectKey())) {
-                                    return cidsBean;
-                                } else {
-                                    return listCidsBean;
-                                }
-                            }
-                        });
+                    final ListIterator<CidsBean> listIterator = parentList.listIterator();
+                    while (listIterator.hasNext()) {
+                        final CidsBean listCidsBean = listIterator.next();
+                        if (cidsBean.getCidsBeanInfo().getJsonObjectKey().equals(
+                                        listCidsBean.getCidsBeanInfo().getJsonObjectKey())) {
+                            listIterator.set(cidsBean);
+                        }
+                    }
                 } else {
                     parentList.add(cidsBean);
                 }
