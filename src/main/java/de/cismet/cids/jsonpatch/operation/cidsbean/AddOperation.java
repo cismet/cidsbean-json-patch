@@ -258,7 +258,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
 
             if ((index < 0) || (index > size)) {
                 LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.notAnIndex")
-                            + ": " + index + "(array size: " + size + ")");
+                            + ": " + index + " (array size: " + size + ")");
                 throw new JsonPatchException(RESOURCE_BUNDLE.getString(
                         "jsonPatch.noSuchIndex"));
             } else if (UTILS.isCidsBean(value)) {
@@ -381,7 +381,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                         final BigDecimal bd = new BigDecimal(valueNode.asText());
                         parentBean.setProperty(property, bd);
                     } else {
-                        throw new Exception("no handler available for class " + attrClass);
+                        throw new Exception("no numeric handler available for class " + attrClass.getSimpleName());
                     }
                 } else if (valueNode.isBoolean()) {
                     final boolean bl = valueNode.asBoolean();
@@ -393,7 +393,10 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                     if (attrClass.equals(Geometry.class)) {
                         final Geometry geom = UTILS.fromEwkt(str);
                         parentBean.setProperty(property, geom);
+                    } else if (attrClass.equals(String.class)) {
+                        parentBean.setProperty(property, str);
                     } else {
+                        LOGGER.warn("expected geometry or string property but got " + attrClass.getSimpleName());
                         parentBean.setProperty(property, str);
                     }
                 } else {
