@@ -22,7 +22,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonpatch.JsonPatchException;
-import com.github.fge.jsonpatch.operation.JsonPatchOperation;
 import com.google.common.collect.Lists;
 import de.cismet.cids.dynamics.CidsBean;
 import de.cismet.cids.jsonpatch.CidsBeanJsonPatchUtils;
@@ -65,6 +64,8 @@ public abstract class CidsBeanPatchOperationTest {
     @DataProvider
     public final Iterator<Object[]> getErrors()
             throws Exception {
+        LOGGER.debug("loading " + errors.size() + " '" + this.operationName + "' error tests");
+        
         final List<Object[]> list = Lists.newArrayList();
 
         for (final JsonNode node : errors) {
@@ -103,8 +104,8 @@ public abstract class CidsBeanPatchOperationTest {
 
     @DataProvider
     public final Iterator<Object[]> getOps() {
+        LOGGER.debug("loading " + ops.size() + " '" + this.operationName + "' success tests");
         final List<Object[]> list = Lists.newArrayList();
-
         for (final JsonNode node : ops) {
             try {
                 list.add(new Object[]{
@@ -112,8 +113,8 @@ public abstract class CidsBeanPatchOperationTest {
                     CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().treeToValue(node.get("bean"), CidsBean.class),
                     CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().treeToValue(node.get("expected"), CidsBean.class)
                 });
-            } catch (IOException ex) {
-                LOGGER.error("cannot deserilaize beans for operation '" + this.operationName + "':"
+            } catch (Exception ex) {
+                LOGGER.error("cannot deserialize beans for operation '" + this.operationName + "':"
                         + ex.getMessage(), ex);
             }
         }

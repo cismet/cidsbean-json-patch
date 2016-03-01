@@ -25,7 +25,6 @@ import com.github.fge.jsonpatch.JsonPatchException;
 import com.github.fge.jsonpatch.operation.CopyOperation;
 import com.github.fge.jsonpatch.operation.MoveOperation;
 import com.github.fge.jsonpatch.operation.RemoveOperation;
-import com.github.fge.jsonpatch.operation.ReplaceOperation;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
@@ -45,6 +44,7 @@ import de.cismet.cids.dynamics.CidsBeanJsonDeserializer;
 import de.cismet.cids.dynamics.CidsBeanJsonSerializer;
 
 import de.cismet.cids.jsonpatch.operation.cidsbean.AddOperation;
+import de.cismet.cids.jsonpatch.operation.cidsbean.ReplaceOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.TestOperation;
 
 /**

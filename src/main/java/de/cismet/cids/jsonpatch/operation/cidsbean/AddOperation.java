@@ -51,7 +51,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
 
 import de.cismet.cids.dynamics.CidsBean;
 
@@ -74,6 +73,8 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
     protected static final ResourceBundle RESOURCE_BUNDLE = UTILS.getResourceBundle();
 
     //~ Instance fields --------------------------------------------------------
+
+    @JsonIgnore protected final com.github.fge.jsonpatch.operation.ReplaceOperation jsonPatchReplaceOperation;
 
     @JsonIgnore protected final boolean overwrite;
 
@@ -101,67 +102,23 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
     protected AddOperation(final JsonPointer path, final JsonNode value, final boolean overwrite) {
         super(path, value);
         this.overwrite = overwrite;
+        if (this.overwrite) {
+            jsonPatchReplaceOperation = new com.github.fge.jsonpatch.operation.ReplaceOperation(path, value);
+        } else {
+            jsonPatchReplaceOperation = null;
+        }
     }
 
     //~ Methods ----------------------------------------------------------------
 
-// @Override
-// public JsonNode apply(final JsonNode node)
-// throws JsonPatchException
-// {
-// if (path.isEmpty())
-// return value;
-//
-// /*
-// * Check the parent node: it must exist and be a container (ie an array
-// * or an object) for the add operation to work.
-// */
-// final JsonNode parentNode = path.parent().path(node);
-// if (parentNode.isMissingNode())
-// throw new JsonPatchException(BUNDLE.getMessage(
-// "jsonPatch.noSuchParent"));
-// if (!parentNode.isContainerNode())
-// throw new JsonPatchException(BUNDLE.getMessage(
-// "jsonPatch.parentNotContainer"));
-// return parentNode.isArray()
-// ? addToArray(path, node)
-// : addToObject(path, node);
-// }
-// protected JsonNode addToArray(final JsonPointer path, final JsonNode node)
-// throws JsonPatchException
-// {
-// final JsonNode ret = node.deepCopy();
-// final ArrayNode target = (ArrayNode) path.parent().get(ret);
-// final TokenResolver<JsonNode> token = Iterables.getLast(path);
-//
-// if (token.getToken().equals(LAST_ARRAY_ELEMENT)) {
-// target.add(value);
-// return ret;
-// }
-//
-// final int size = target.size();
-// final int index;
-// try {
-// index = Integer.parseInt(token.toString());
-// } catch (NumberFormatException ignored) {
-// throw new JsonPatchException(BUNDLE.getMessage(
-// "jsonPatch.notAnIndex"));
-// }
-//
-// if (index < 0 || index > size)
-// throw new JsonPatchException(BUNDLE.getMessage(
-// "jsonPatch.noSuchIndex"));
-//
-// target.insert(index, value);
-// return ret;
-// }
-// protected JsonNode addToObject(final JsonPointer path, final JsonNode node)
-// {
-// final JsonNode ret = node.deepCopy();
-// final ObjectNode target = (ObjectNode) path.parent().get(ret);
-// target.put(Iterables.getLast(path).getToken().getRaw(), value);
-// return ret;
-// }
+    @Override
+    public JsonNode apply(final JsonNode node) throws JsonPatchException {
+        if (this.overwrite) {
+            return this.jsonPatchReplaceOperation.apply(node);
+        } else {
+            return super.apply(node);
+        }
+    }
     @Override
     public CidsBean apply(final CidsBean cidsBean) throws JsonPatchException {
         if ((this.value == null) || this.value.isMissingNode()) {
