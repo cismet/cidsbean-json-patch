@@ -19,6 +19,7 @@
 package de.cismet.cids.jsonpatch.operation;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonpatch.JsonPatchException;
@@ -31,6 +32,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static org.testng.Assert.*;
 import org.testng.log4testng.Logger;
@@ -42,6 +44,9 @@ public abstract class CidsBeanPatchOperationTest {
     protected final ObjectReader reader;
     protected final static Logger LOGGER = Logger.getLogger(CidsBeanPatchOperationTest.class);
     protected final String operationName;
+    
+    protected final static ObjectMapper OBJECT_MAPPER = CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper();
+    protected final static ResourceBundle RESOURCE_BUNDLE = CidsBeanJsonPatchUtils.getInstance().getResourceBundle();
 
     protected CidsBeanPatchOperationTest(final String operationName) throws IOException {
         try {
@@ -72,8 +77,8 @@ public abstract class CidsBeanPatchOperationTest {
             try {
                 list.add(new Object[]{
                     node.get("op"),
-                    CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().treeToValue(node.get("bean"), CidsBean.class),
-                    CidsBeanJsonPatchUtils.getInstance().getResourceBundle().getString(node.get("message").textValue())
+                    OBJECT_MAPPER.treeToValue(node.get("bean"), CidsBean.class),
+                    RESOURCE_BUNDLE.getString(node.get("message").textValue())
                 });
             } catch (Exception e) {
                 LOGGER.error(e.getMessage(), e);
@@ -89,16 +94,20 @@ public abstract class CidsBeanPatchOperationTest {
     public final void errorsAreCorrectlyReported(final JsonNode patch,
             final CidsBean cidsBean, final String message)
             throws IOException, JsonPatchException {
+        try {
         final CidsBeanPatchOperation op = reader.readValue(patch);
         LOGGER.info("testing '" + this.operationName + "' operation error: " + op.toString());
 
-        try {
+       
             op.apply(cidsBean);
             LOGGER.error("No exception thrown for operation " + op.toString());
             fail("No exception thrown for operation " + op.toString());
-        } catch (JsonPatchException e) {
+        } catch (final JsonPatchException e) {
             LOGGER.debug("JsonPatchException thrown: " + e.getMessage());
             assertEquals(e.getMessage(), message);
+        } catch (final Throwable t) {
+            LOGGER.error("testing '" + this.operationName + " failed: " + t.getMessage(), t);
+            throw t;
         }
     }
 
@@ -110,8 +119,8 @@ public abstract class CidsBeanPatchOperationTest {
             try {
                 list.add(new Object[]{
                     reader.readValue(node.get("op")),
-                    CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().treeToValue(node.get("bean"), CidsBean.class),
-                    CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().treeToValue(node.get("expected"), CidsBean.class)
+                    OBJECT_MAPPER.treeToValue(node.get("bean"), CidsBean.class),
+                    OBJECT_MAPPER.treeToValue(node.get("expected"), CidsBean.class)
                 });
             } catch (Exception ex) {
                 LOGGER.error("cannot deserialize beans for operation '" + this.operationName + "':"

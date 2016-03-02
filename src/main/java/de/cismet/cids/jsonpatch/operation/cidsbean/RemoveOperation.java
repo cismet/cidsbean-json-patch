@@ -75,6 +75,7 @@ public class RemoveOperation extends com.github.fge.jsonpatch.operation.RemoveOp
 
         final Object removeObject = cidsBean.getProperty(cidsBeanPointer);
         if (removeObject == null) {
+            LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty") + ": " + cidsBeanPointer);
             throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty"));
         }
 

@@ -56,12 +56,14 @@ public class CopyOperation extends com.github.fge.jsonpatch.operation.CopyOperat
 
     @Override
     public CidsBean apply(final CidsBean cidsBean) throws JsonPatchException {
-        final String cidsBeanPointer = UTILS.jsonPointerToCidsBeanPointer(this.from);
-        if ((cidsBeanPointer == null) || cidsBeanPointer.isEmpty()) {
+        final String cidsBeanToPointer = UTILS.jsonPointerToCidsBeanPointer(this.path);
+        final String cidsBeanFromPointer = UTILS.jsonPointerToCidsBeanPointer(this.from);
+        if ((cidsBeanToPointer == null) || cidsBeanToPointer.isEmpty()
+                    || (cidsBeanFromPointer == null) || cidsBeanFromPointer.isEmpty()) {
             throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.rootNodeNotPermitted"));
         }
 
-        final Object copyObject = cidsBean.getProperty(cidsBeanPointer);
+        final Object copyObject = cidsBean.getProperty(cidsBeanFromPointer);
         if (copyObject == null) {
             throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.nullValue"));
         }
