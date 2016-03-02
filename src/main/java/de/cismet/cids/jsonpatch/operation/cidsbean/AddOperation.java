@@ -199,7 +199,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                     parentList.add(cidsBean);
                 }
             } else {
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueforArray"));
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArray"));
             }
         } else {
             final int size = parentList.size();
@@ -226,10 +226,10 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                     parentList.add(index, cidsBean);
                 }
             } else {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueforArrayIndex")
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex")
                             + ": " + value);
                 throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.invalidValueforArrayIndex"));
+                        "jsonPatch.invalidValueForArrayIndex"));
             }
         }
     }
