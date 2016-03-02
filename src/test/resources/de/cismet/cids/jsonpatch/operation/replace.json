@@ -5,7 +5,7 @@
                 "op": "replace",
                 "path": "/taggroup",
                 "value": {
-                    "$self": "/SWITCHON.TAGGROUP/145",
+                    "$ref": "/SWITCHON.TAGGROUP/145",
                     "id": 145,
                     "name": "no limitations",
                     "description": "no Limitations"
@@ -22,7 +22,7 @@
                     "description": "Limitations on public access in accordance to Article 13 of Directive 2007/2/EC (fixed group with tags from a standard codelist)."
                 }
             },
-            "message": "jsonPatch.valueNoNewBean"
+            "message": "jsonPatch.valueNoReferenceBean"
         }, {
             "op": {
                 "op": "replace",
@@ -3037,12 +3037,5 @@
                 "content": null
             }
         }
-
-
-
-
-
-
-
     ]
 }

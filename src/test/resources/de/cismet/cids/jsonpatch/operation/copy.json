@@ -1,0 +1,928 @@
+{
+    "errors": [
+        {
+            "op": {
+                "op": "copy",
+                "path": "/taggroup",
+                "from": "/qwertz"
+            },
+            "bean": {
+                "$self": "/SWITCHON.TAG/1534",
+                "id": 1534,
+                "name": "Open Datasets",
+                "taggroup": {
+                    "$self": "/SWITCHON.TAGGROUP/146",
+                    "id": 146,
+                    "name": "access limitations",
+                    "description": "Limitations on public access in accordance to Article 13 of Directive 2007/2/EC (fixed group with tags from a standard codelist)."
+                }
+            },
+            "message": "jsonPatch.nullValue"
+        }
+    ],
+    "ops": [
+        {
+            "op": {
+                "op": "copy",
+                "path": "/tags/-",
+                "from": "/tags/0"
+            },
+            "bean": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": {
+                    "$self": "/SWITCHON.TAG/866",
+                    "id": 866,
+                    "name": "other",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/145",
+                        "id": 145,
+                        "name": "access conditions",
+                        "description": "License regulating the conditions for access and use of the data (open group with some predefined tags)."
+                    },
+                    "description": "Non-standard license. Please refer to the additional license conditions, if available."
+                },
+                "spatialcoverage": {
+                    "$self": "/SWITCHON.GEOM/10411",
+                    "id": 10411,
+                    "geo_field": "SRID=4326;POLYGON ((5.85248986800011 47.271120911, 5.85248986800011 55.065334377, 15.0220593670001 55.065334377, 15.0220593670001 47.271120911, 5.85248986800011 47.271120911))"
+                },
+                "todate": null,
+                "srid": {
+                    "$self": "/SWITCHON.TAG/226",
+                    "id": 226,
+                    "name": "EPSG:4326",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/167",
+                        "id": 167,
+                        "name": "srid",
+                        "description": "The Spatial Reference System Identifier (SRID) of the spatial coverage of the resource EPSG format (open group with some predefined tags)."
+                    },
+                    "description": "WGS 84 / World Geodetic System 1984"
+                },
+                "conformity": {
+                    "$self": "/SWITCHON.TAG/253",
+                    "id": 253,
+                    "name": "Not evaluated",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/150",
+                        "id": 150,
+                        "name": "conformity",
+                        "description": "This is a citation of the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification to which a particular resource conforms. (fixed group)"
+                    },
+                    "description": "Not evaluated"
+                },
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "description": "OPeNDAP TEST DATASET",
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": {
+                    "$self": "/SWITCHON.TAG/230",
+                    "id": 230,
+                    "name": "climatologyMeteorologyAtmosphere",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/168",
+                        "id": 168,
+                        "name": "topic category",
+                        "description": "High-level classification of resources in accordance with ISO 19115 for grouping and topic-based search (fixed group)."
+                    },
+                    "description": "processes and phenomena of the atmosphere. Examples: cloud cover, weather, climate, atmospheric conditions, climate change, precipitation"
+                },
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/221",
+                        "id": 221,
+                        "name": "pointOfContact",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/165",
+                            "id": 165,
+                            "name": "role",
+                            "description": "Function performed by the responsible party (fixed group, standard codelist)."
+                        },
+                        "description": "Party that can be contacted for acquiring knowledge about or acquisition of the data resource. Person or organization that can be contacted to acquire data on the resource."
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": {
+                            "$self": "/SWITCHON.TAG/212",
+                            "id": 212,
+                            "name": "original data",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/163",
+                                "id": 163,
+                                "name": "representation type",
+                                "description": "SIP internal type of the representation of the resource (fixed group)."
+                            },
+                            "description": "The representation holds the original data of the resource"
+                        },
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": {
+                            "$self": "/SWITCHON.TAG/191",
+                            "id": 191,
+                            "name": "OPeNDAP:OPeNDAP",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/161",
+                                "id": 161,
+                                "name": "protocol",
+                                "description": "Protocol of the service that can be accessed at the contentLocation of the resource representation (open group with several predefined tags from standard codelists)."
+                            },
+                            "description": "OPeNDAP root URL"
+                        },
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": {
+                            "$self": "/SWITCHON.TAG/212",
+                            "id": 212,
+                            "name": "original data",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/163",
+                                "id": 163,
+                                "name": "representation type",
+                                "description": "SIP internal type of the representation of the resource (fixed group)."
+                            },
+                            "description": "The representation holds the original data of the resource"
+                        },
+                        "function": {
+                            "$self": "/SWITCHON.TAG/69",
+                            "id": 69,
+                            "name": "information",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link provides information about resource"
+                        },
+                        "protocol": {
+                            "$self": "/SWITCHON.TAG/197",
+                            "id": 197,
+                            "name": "WWW:LINK-1.0-http--link",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/161",
+                                "id": 161,
+                                "name": "protocol",
+                                "description": "Protocol of the service that can be accessed at the contentLocation of the resource representation (open group with several predefined tags from standard codelists)."
+                            },
+                            "description": "Web Address (URL), should be used when no further information about the resource is available"
+                        },
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/65",
+                            "id": 65,
+                            "name": "text/html",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "HTML (Hypertext Markup Language)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [{
+                        "$self": "/SWITCHON.METADATA/14458",
+                        "id": 14458,
+                        "name": "Basic Lineage Meta-Data",
+                        "tags": [],
+                        "description": "NO Data Lineage",
+                        "contact": null,
+                        "type": null,
+                        "language": {
+                            "$self": "/SWITCHON.TAG/145",
+                            "id": 145,
+                            "name": "eng",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/157",
+                                "id": 157,
+                                "name": "language",
+                                "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                            },
+                            "description": "English"
+                        },
+                        "standard": {
+                            "$self": "/SWITCHON.TAG/1387",
+                            "id": 1387,
+                            "name": "SWITCH-ON SIM",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/159",
+                                "id": 159,
+                                "name": "meta-data standard",
+                                "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                            },
+                            "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                        },
+                        "uuid": null,
+                        "contentlocation": null,
+                        "creationdate": 1456139550080,
+                        "contenttype": null,
+                        "content": null
+                    }, {
+                        "$self": "/SWITCHON.METADATA/14457",
+                        "id": 14457,
+                        "name": "OpenData Registration Meta-Data",
+                        "tags": [],
+                        "description": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36",
+                        "contact": null,
+                        "type": null,
+                        "language": {
+                            "$self": "/SWITCHON.TAG/145",
+                            "id": 145,
+                            "name": "eng",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/157",
+                                "id": 157,
+                                "name": "language",
+                                "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                            },
+                            "description": "English"
+                        },
+                        "standard": {
+                            "$self": "/SWITCHON.TAG/1387",
+                            "id": 1387,
+                            "name": "SWITCH-ON SIM",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/159",
+                                "id": 159,
+                                "name": "meta-data standard",
+                                "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                            },
+                            "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                        },
+                        "uuid": null,
+                        "contentlocation": null,
+                        "creationdate": 1456139550080,
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "content": "[{\"key\":\"standalone\",\"value\":\"true\",\"lastBuildDate\":1455710244801},{\"key\":\"startupMode\",\"value\":\"non-interactive\",\"lastBuildDate\":1455710245184},{\"key\":\"registry\",\"value\":\"NO-REGISTRY-BECAUSE-OF-STANDALONE-SERVER\",\"lastBuildDate\":1455710244801},{\"key\":\"cachedUsers\",\"value\":\"1\",\"lastBuildDate\":1455710279425},{\"key\":\"connector\",\"value\":\"0.0.0.0:8890\",\"lastBuildDate\":1455710245166},{\"key\":\"sslEnabled\",\"value\":\"false\",\"lastBuildDate\":1455710244801},{\"key\":\"activeCores\",\"value\":[\"core.legacy.action\",\"core.legacy.entity\",\"core.legacy.entityInfo\",\"core.default.infrastructure\",\"core.legacy.node\",\"core.legacy.permission\",\"core.legacy.search\",\"core.legacy.user\"],\"lastBuildDate\":1455710244803},{\"key\":\"serverStart\",\"value\":\"1455710245184\",\"lastBuildDate\":1455710245184},{\"key\":\"cachedClasses\",\"value\":\"18\",\"lastBuildDate\":1455710281246},{\"key\":\"request\",\"value\":{\"Accept-Language\":\"de-DE,de;q=0.8,en-US;q=0.6,en;q=0.4\",\"localName\":\"127.0.0.1\",\"Host\":\"localhost:8890\",\"localAddress\":\"127.0.0.1\",\"Accept-Encoding\":\"gzip, deflate, sdch\",\"Referer\":\"http://localhost:8383/sip-html5-resource-registration/index.html\",\"X-Forwarded-Server\":\"switchon.cismet.de\",\"X-Forwarded-For\":\"79.196.31.183\",\"DNT\":\"1\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\",\"Origin\":\"http://localhost:8383\",\"Connection\":\"Keep-Alive\",\"Accept\":\"application/json, text/plain, */*\",\"X-Forwarded-Host\":\"switchon.cismet.de\"},\"lastBuildDate\":1456135574507}]"
+                    }],
+                "accesslimitations": {
+                    "$self": "/SWITCHON.TAG/1",
+                    "id": 1,
+                    "name": "limitation not listed",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/146",
+                        "id": 146,
+                        "name": "access limitations",
+                        "description": "Limitations on public access in accordance to Article 13 of Directive 2007/2/EC (fixed group with tags from a standard codelist)."
+                    },
+                    "description": "otherRestrictions (limitation not listed)"
+                },
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": {
+                    "$self": "/SWITCHON.TAG/1534",
+                    "id": 1534,
+                    "name": "Open Datasets",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/149",
+                        "id": 149,
+                        "name": "collection",
+                        "description": "Assigns the resource to a collection of resources for cataloguing purposes, e.g. SWITCH-ON Experiment Results, etc. (open group with some predefined tags)."
+                    },
+                    "description": "Open Datasets registered through the SWITCH-ON Website"
+                },
+                "publicationdate": null
+            },
+            "expected": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": {
+                    "$self": "/SWITCHON.TAG/866",
+                    "id": 866,
+                    "name": "other",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/145",
+                        "id": 145,
+                        "name": "access conditions",
+                        "description": "License regulating the conditions for access and use of the data (open group with some predefined tags)."
+                    },
+                    "description": "Non-standard license. Please refer to the additional license conditions, if available."
+                },
+                "spatialcoverage": {
+                    "$self": "/SWITCHON.GEOM/10411",
+                    "id": 10411,
+                    "geo_field": "SRID=4326;POLYGON ((5.85248986800011 47.271120911, 5.85248986800011 55.065334377, 15.0220593670001 55.065334377, 15.0220593670001 47.271120911, 5.85248986800011 47.271120911))"
+                },
+                "todate": null,
+                "srid": {
+                    "$self": "/SWITCHON.TAG/226",
+                    "id": 226,
+                    "name": "EPSG:4326",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/167",
+                        "id": 167,
+                        "name": "srid",
+                        "description": "The Spatial Reference System Identifier (SRID) of the spatial coverage of the resource EPSG format (open group with some predefined tags)."
+                    },
+                    "description": "WGS 84 / World Geodetic System 1984"
+                },
+                "conformity": {
+                    "$self": "/SWITCHON.TAG/253",
+                    "id": 253,
+                    "name": "Not evaluated",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/150",
+                        "id": 150,
+                        "name": "conformity",
+                        "description": "This is a citation of the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification to which a particular resource conforms. (fixed group)"
+                    },
+                    "description": "Not evaluated"
+                },
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "description": "OPeNDAP TEST DATASET",
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": {
+                    "$self": "/SWITCHON.TAG/230",
+                    "id": 230,
+                    "name": "climatologyMeteorologyAtmosphere",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/168",
+                        "id": 168,
+                        "name": "topic category",
+                        "description": "High-level classification of resources in accordance with ISO 19115 for grouping and topic-based search (fixed group)."
+                    },
+                    "description": "processes and phenomena of the atmosphere. Examples: cloud cover, weather, climate, atmospheric conditions, climate change, precipitation"
+                },
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/221",
+                        "id": 221,
+                        "name": "pointOfContact",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/165",
+                            "id": 165,
+                            "name": "role",
+                            "description": "Function performed by the responsible party (fixed group, standard codelist)."
+                        },
+                        "description": "Party that can be contacted for acquiring knowledge about or acquisition of the data resource. Person or organization that can be contacted to acquire data on the resource."
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": {
+                            "$self": "/SWITCHON.TAG/212",
+                            "id": 212,
+                            "name": "original data",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/163",
+                                "id": 163,
+                                "name": "representation type",
+                                "description": "SIP internal type of the representation of the resource (fixed group)."
+                            },
+                            "description": "The representation holds the original data of the resource"
+                        },
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": {
+                            "$self": "/SWITCHON.TAG/191",
+                            "id": 191,
+                            "name": "OPeNDAP:OPeNDAP",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/161",
+                                "id": 161,
+                                "name": "protocol",
+                                "description": "Protocol of the service that can be accessed at the contentLocation of the resource representation (open group with several predefined tags from standard codelists)."
+                            },
+                            "description": "OPeNDAP root URL"
+                        },
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": {
+                            "$self": "/SWITCHON.TAG/212",
+                            "id": 212,
+                            "name": "original data",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/163",
+                                "id": 163,
+                                "name": "representation type",
+                                "description": "SIP internal type of the representation of the resource (fixed group)."
+                            },
+                            "description": "The representation holds the original data of the resource"
+                        },
+                        "function": {
+                            "$self": "/SWITCHON.TAG/69",
+                            "id": 69,
+                            "name": "information",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link provides information about resource"
+                        },
+                        "protocol": {
+                            "$self": "/SWITCHON.TAG/197",
+                            "id": 197,
+                            "name": "WWW:LINK-1.0-http--link",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/161",
+                                "id": 161,
+                                "name": "protocol",
+                                "description": "Protocol of the service that can be accessed at the contentLocation of the resource representation (open group with several predefined tags from standard codelists)."
+                            },
+                            "description": "Web Address (URL), should be used when no further information about the resource is available"
+                        },
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/65",
+                            "id": 65,
+                            "name": "text/html",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "HTML (Hypertext Markup Language)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [{
+                        "$self": "/SWITCHON.METADATA/14458",
+                        "id": 14458,
+                        "name": "Basic Lineage Meta-Data",
+                        "tags": [],
+                        "description": "NO Data Lineage",
+                        "contact": null,
+                        "type": null,
+                        "language": {
+                            "$self": "/SWITCHON.TAG/145",
+                            "id": 145,
+                            "name": "eng",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/157",
+                                "id": 157,
+                                "name": "language",
+                                "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                            },
+                            "description": "English"
+                        },
+                        "standard": {
+                            "$self": "/SWITCHON.TAG/1387",
+                            "id": 1387,
+                            "name": "SWITCH-ON SIM",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/159",
+                                "id": 159,
+                                "name": "meta-data standard",
+                                "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                            },
+                            "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                        },
+                        "uuid": null,
+                        "contentlocation": null,
+                        "creationdate": 1456139550080,
+                        "contenttype": null,
+                        "content": null
+                    }, {
+                        "$self": "/SWITCHON.METADATA/14457",
+                        "id": 14457,
+                        "name": "OpenData Registration Meta-Data",
+                        "tags": [],
+                        "description": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36",
+                        "contact": null,
+                        "type": null,
+                        "language": {
+                            "$self": "/SWITCHON.TAG/145",
+                            "id": 145,
+                            "name": "eng",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/157",
+                                "id": 157,
+                                "name": "language",
+                                "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                            },
+                            "description": "English"
+                        },
+                        "standard": {
+                            "$self": "/SWITCHON.TAG/1387",
+                            "id": 1387,
+                            "name": "SWITCH-ON SIM",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/159",
+                                "id": 159,
+                                "name": "meta-data standard",
+                                "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                            },
+                            "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                        },
+                        "uuid": null,
+                        "contentlocation": null,
+                        "creationdate": 1456139550080,
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "content": "[{\"key\":\"standalone\",\"value\":\"true\",\"lastBuildDate\":1455710244801},{\"key\":\"startupMode\",\"value\":\"non-interactive\",\"lastBuildDate\":1455710245184},{\"key\":\"registry\",\"value\":\"NO-REGISTRY-BECAUSE-OF-STANDALONE-SERVER\",\"lastBuildDate\":1455710244801},{\"key\":\"cachedUsers\",\"value\":\"1\",\"lastBuildDate\":1455710279425},{\"key\":\"connector\",\"value\":\"0.0.0.0:8890\",\"lastBuildDate\":1455710245166},{\"key\":\"sslEnabled\",\"value\":\"false\",\"lastBuildDate\":1455710244801},{\"key\":\"activeCores\",\"value\":[\"core.legacy.action\",\"core.legacy.entity\",\"core.legacy.entityInfo\",\"core.default.infrastructure\",\"core.legacy.node\",\"core.legacy.permission\",\"core.legacy.search\",\"core.legacy.user\"],\"lastBuildDate\":1455710244803},{\"key\":\"serverStart\",\"value\":\"1455710245184\",\"lastBuildDate\":1455710245184},{\"key\":\"cachedClasses\",\"value\":\"18\",\"lastBuildDate\":1455710281246},{\"key\":\"request\",\"value\":{\"Accept-Language\":\"de-DE,de;q=0.8,en-US;q=0.6,en;q=0.4\",\"localName\":\"127.0.0.1\",\"Host\":\"localhost:8890\",\"localAddress\":\"127.0.0.1\",\"Accept-Encoding\":\"gzip, deflate, sdch\",\"Referer\":\"http://localhost:8383/sip-html5-resource-registration/index.html\",\"X-Forwarded-Server\":\"switchon.cismet.de\",\"X-Forwarded-For\":\"79.196.31.183\",\"DNT\":\"1\",\"User-Agent\":\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\",\"Origin\":\"http://localhost:8383\",\"Connection\":\"Keep-Alive\",\"Accept\":\"application/json, text/plain, */*\",\"X-Forwarded-Host\":\"switchon.cismet.de\"},\"lastBuildDate\":1456135574507}]"
+                    }],
+                "accesslimitations": {
+                    "$self": "/SWITCHON.TAG/1",
+                    "id": 1,
+                    "name": "limitation not listed",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/146",
+                        "id": 146,
+                        "name": "access limitations",
+                        "description": "Limitations on public access in accordance to Article 13 of Directive 2007/2/EC (fixed group with tags from a standard codelist)."
+                    },
+                    "description": "otherRestrictions (limitation not listed)"
+                },
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": {
+                    "$self": "/SWITCHON.TAG/1534",
+                    "id": 1534,
+                    "name": "Open Datasets",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/149",
+                        "id": 149,
+                        "name": "collection",
+                        "description": "Assigns the resource to a collection of resources for cataloguing purposes, e.g. SWITCH-ON Experiment Results, etc. (open group with some predefined tags)."
+                    },
+                    "description": "Open Datasets registered through the SWITCH-ON Website"
+                },
+                "publicationdate": null
+            }
+        },
+        {
+            "op": {
+                "op": "copy",
+                "path": "/contenttype",
+                "from": "/language"
+            },
+            "bean": {
+                "$self": "/SWITCHON.METADATA/14458",
+                "id": 14458,
+                "name": "Basic Lineage Meta-Data",
+                "tags": [],
+                "description": "NO Data Lineage",
+                "contact": null,
+                "type": null,
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "standard": {
+                    "$self": "/SWITCHON.TAG/1387",
+                    "id": 1387,
+                    "name": "SWITCH-ON SIM",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/159",
+                        "id": 159,
+                        "name": "meta-data standard",
+                        "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                    },
+                    "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                },
+                "uuid": null,
+                "contentlocation": null,
+                "creationdate": 1456139550080,
+                "contenttype": null,
+                "content": null
+            },
+            "expected": {
+                "$self": "/SWITCHON.METADATA/14458",
+                "id": 14458,
+                "name": "Basic Lineage Meta-Data",
+                "tags": [],
+                "description": "NO Data Lineage",
+                "contact": null,
+                "type": null,
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "standard": {
+                    "$self": "/SWITCHON.TAG/1387",
+                    "id": 1387,
+                    "name": "SWITCH-ON SIM",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/159",
+                        "id": 159,
+                        "name": "meta-data standard",
+                        "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                    },
+                    "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                },
+                "uuid": null,
+                "contentlocation": null,
+                "creationdate": 1456139550080,
+                "contenttype": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "content": null
+            }
+        }
+    ]
+}
+        

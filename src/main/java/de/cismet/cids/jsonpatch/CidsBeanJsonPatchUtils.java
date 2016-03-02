@@ -22,7 +22,6 @@ import com.fasterxml.jackson.databind.node.ValueNode;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jackson.jsonpointer.TokenResolver;
 import com.github.fge.jsonpatch.JsonPatchException;
-import com.github.fge.jsonpatch.operation.CopyOperation;
 import com.github.fge.jsonpatch.operation.MoveOperation;
 import com.github.fge.jsonpatch.operation.RemoveOperation;
 
@@ -44,6 +43,7 @@ import de.cismet.cids.dynamics.CidsBeanJsonDeserializer;
 import de.cismet.cids.dynamics.CidsBeanJsonSerializer;
 
 import de.cismet.cids.jsonpatch.operation.cidsbean.AddOperation;
+import de.cismet.cids.jsonpatch.operation.cidsbean.CopyOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.ReplaceOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.TestOperation;
 
@@ -315,13 +315,11 @@ public class CidsBeanJsonPatchUtils {
             } else {
                 final CidsBeanInfo cidsBeanInfo = new CidsBeanInfo(value.get(
                             CidsBeanInfo.JSON_CIDS_OBJECT_KEY_IDENTIFIER).textValue());
-                if (!cidsBeanInfo.getObjectKey().equals("-1")) {
-                    throw new JsonPatchException(resourceBundle.getString("jsonPatch.valueNoNewBean"));
-                } else {
-                    final CidsBean cidsBean = this.jsonNodeToCidsBean(value);
+                final CidsBean cidsBean = this.jsonNodeToCidsBean(value);
+                if (cidsBeanInfo.getObjectKey().equals("-1")) {
                     this.applyCidsBeanUpdateStatus(cidsBean, false);
-                    return cidsBean;
                 }
+                return cidsBean;
             }
         } else if (this.isCidsBeanArray(value)) {
             final List<CidsBean> beanList = new ArrayList<CidsBean>();
