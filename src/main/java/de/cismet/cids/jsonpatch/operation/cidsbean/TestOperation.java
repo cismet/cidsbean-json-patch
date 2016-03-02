@@ -15,8 +15,6 @@ import com.github.fge.jackson.JsonNumEquals;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonpatch.JsonPatchException;
 
-import java.io.IOException;
-
 import java.util.ResourceBundle;
 
 import de.cismet.cids.dynamics.CidsBean;

@@ -27,9 +27,9 @@ package de.cismet.cids.jsonpatch.operation;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.JsonSerializable;
 
 import com.github.fge.jsonpatch.JsonPatchException;
+import com.github.fge.jsonpatch.operation.JsonPatchOperation;
 import com.github.fge.jsonpatch.operation.PathValueOperation;
 
 import de.cismet.cids.dynamics.CidsBean;
@@ -55,7 +55,7 @@ import de.cismet.cids.dynamics.CidsBean;
     property = "op"
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface CidsBeanPatchOperation extends JsonSerializable {
+public interface CidsBeanPatchOperation extends JsonPatchOperation {
 
     //~ Methods ----------------------------------------------------------------
 
