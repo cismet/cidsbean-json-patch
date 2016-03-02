@@ -48,7 +48,7 @@ import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
  *
  * @version  $Revision$, $Date$
  */
-public class CidsBeanJsonPatch implements JsonSerializable {
+public class CidsBeanPatch implements JsonSerializable {
 
     //~ Instance fields --------------------------------------------------------
 
@@ -66,7 +66,7 @@ public class CidsBeanJsonPatch implements JsonSerializable {
      * @see    JsonPatchOperation
      */
     @JsonCreator
-    public CidsBeanJsonPatch(final List<CidsBeanPatchOperation> operations) {
+    public CidsBeanPatch(final List<CidsBeanPatchOperation> operations) {
         this.operations = ImmutableList.copyOf(operations);
     }
 

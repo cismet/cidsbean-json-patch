@@ -25,7 +25,7 @@ import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.google.common.collect.Lists;
 import de.cismet.cids.dynamics.CidsBean;
-import de.cismet.cids.jsonpatch.CidsBeanJsonPatchUtils;
+import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -45,8 +45,8 @@ public abstract class CidsBeanPatchOperationTest {
     protected final static Logger LOGGER = Logger.getLogger(CidsBeanPatchOperationTest.class);
     protected final String operationName;
     
-    protected final static ObjectMapper OBJECT_MAPPER = CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper();
-    protected final static ResourceBundle RESOURCE_BUNDLE = CidsBeanJsonPatchUtils.getInstance().getResourceBundle();
+    protected final static ObjectMapper OBJECT_MAPPER = CidsBeanPatchUtils.getInstance().getCidsBeanMapper();
+    protected final static ResourceBundle RESOURCE_BUNDLE = CidsBeanPatchUtils.getInstance().getResourceBundle();
 
     protected CidsBeanPatchOperationTest(final String operationName) throws IOException {
         try {
@@ -55,7 +55,7 @@ public abstract class CidsBeanPatchOperationTest {
             final JsonNode node = JsonLoader.fromResource(resource);
             errors = node.get("errors");
             ops = node.get("ops");
-            reader = CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().reader().withType(CidsBeanPatchOperation.class);
+            reader = CidsBeanPatchUtils.getInstance().getCidsBeanMapper().reader().withType(CidsBeanPatchOperation.class);
 
             LOGGER.info(errors.size() + " error tests and " + ops.size()
                     + " operation tests available for operation '"

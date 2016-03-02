@@ -53,11 +53,11 @@ import de.cismet.cids.jsonpatch.operation.cidsbean.TestOperation;
  * @author   Pascal Dihé <pascal.dihe@cismet.de>
  * @version  $Revision$, $Date$
  */
-public class CidsBeanJsonPatchUtils {
+public class CidsBeanPatchUtils {
 
     //~ Static fields/initializers ---------------------------------------------
 
-    protected static final CidsBeanJsonPatchUtils INSTANCE = new CidsBeanJsonPatchUtils();
+    protected static final CidsBeanPatchUtils INSTANCE = new CidsBeanPatchUtils();
 
     //~ Instance fields --------------------------------------------------------
 
@@ -70,7 +70,7 @@ public class CidsBeanJsonPatchUtils {
     /**
      * Creates a new CidsBeanJsonPatchUtils object.
      */
-    protected CidsBeanJsonPatchUtils() {
+    protected CidsBeanPatchUtils() {
         cidsBeanMapper.enable(SerializationFeature.INDENT_OUTPUT);
         final SimpleModule regularModule = new SimpleModule("NOIOC", new Version(1, 0, 0, null, null, null));
         regularModule.addSerializer(new CidsBeanJsonSerializer());
@@ -92,7 +92,7 @@ public class CidsBeanJsonPatchUtils {
      *
      * @return  DOCUMENT ME!
      */
-    public static CidsBeanJsonPatchUtils getInstance() {
+    public static CidsBeanPatchUtils getInstance() {
         return INSTANCE;
     }
 
@@ -233,12 +233,12 @@ public class CidsBeanJsonPatchUtils {
      */
     public JsonNode cidsBeanToJsonNode(final CidsBean cidsBean) throws JsonPatchException {
         // does not work! cids bean json serialisation broken final JsonNode node =
-        // CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().valueToTree(cidsBean);
+        // CidsBeanPatchUtils.getInstance().getCidsBeanMapper().valueToTree(cidsBean);
 
         final String json = cidsBean.toJSONString(false);
         final JsonNode node;
         try {
-            node = CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().readTree(json);
+            node = CidsBeanPatchUtils.getInstance().getCidsBeanMapper().readTree(json);
             return node;
         } catch (IOException ex) {
             throw new JsonPatchException(this.resourceBundle.getString("jsonPatch.serBeanFailed"), ex);

@@ -56,11 +56,11 @@ public class CidsBeanDeserialisationTest {
             assertEquals(cidsBean.getProperty("representation[1].type.name"), "original data");
             
             assertEquals("representation[0].type.name", 
-                    CidsBeanJsonPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
+                    CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
                             new JsonPointer("/representation/0/type/name")));
             
             assertEquals(cidsBean.getProperty("representation[1].type.name"),
-                    cidsBean.getProperty(CidsBeanJsonPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
+                    cidsBean.getProperty(CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
                             new JsonPointer("/representation/1/type/name"))));
             
             assertTrue(((List)cidsBean.getProperty("representation[1].tags")).isEmpty());
@@ -68,7 +68,7 @@ public class CidsBeanDeserialisationTest {
             cidsBean.getMetaObject().getAttributeByFieldName("name").getMai().isForeignKey();
             
             LOGGER.debug(new JsonPointer("/"));
-            LOGGER.debug(CidsBeanJsonPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
+            LOGGER.debug(CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
                             new JsonPointer("/")));
             
  
