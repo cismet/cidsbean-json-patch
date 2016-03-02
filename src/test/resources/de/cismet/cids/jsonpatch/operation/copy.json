@@ -17,7 +17,7 @@
                     "description": "Limitations on public access in accordance to Article 13 of Directive 2007/2/EC (fixed group with tags from a standard codelist)."
                 }
             },
-            "message": "jsonPatch.noSuchPath"
+            "message": "jsonPatch.nullValue"
         }
     ],
     "ops": [
@@ -828,8 +828,101 @@
                 },
                 "publicationdate": null
             }
+        },
+        {
+            "op": {
+                "op": "copy",
+                "path": "/contenttype",
+                "from": "/language"
+            },
+            "bean": {
+                "$self": "/SWITCHON.METADATA/14458",
+                "id": 14458,
+                "name": "Basic Lineage Meta-Data",
+                "tags": [],
+                "description": "NO Data Lineage",
+                "contact": null,
+                "type": null,
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "standard": {
+                    "$self": "/SWITCHON.TAG/1387",
+                    "id": 1387,
+                    "name": "SWITCH-ON SIM",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/159",
+                        "id": 159,
+                        "name": "meta-data standard",
+                        "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                    },
+                    "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                },
+                "uuid": null,
+                "contentlocation": null,
+                "creationdate": 1456139550080,
+                "contenttype": null,
+                "content": null
+            },
+            "expected": {
+                "$self": "/SWITCHON.METADATA/14458",
+                "id": 14458,
+                "name": "Basic Lineage Meta-Data",
+                "tags": [],
+                "description": "NO Data Lineage",
+                "contact": null,
+                "type": null,
+                "language": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "standard": {
+                    "$self": "/SWITCHON.TAG/1387",
+                    "id": 1387,
+                    "name": "SWITCH-ON SIM",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/159",
+                        "id": 159,
+                        "name": "meta-data standard",
+                        "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                    },
+                    "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                },
+                "uuid": null,
+                "contentlocation": null,
+                "creationdate": 1456139550080,
+                "contenttype": {
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "eng",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                },
+                "content": null
+            }
         }
-
     ]
 }
         
