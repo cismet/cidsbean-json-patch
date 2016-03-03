@@ -52,7 +52,7 @@ public class CidsBeanPatchTestSuite
         throws IOException
     {
         testNode = JsonLoader.fromResource("/de/cismet/cids/jsonpatch/testsuite.json");
-        reader = OBJECT_MAPPER.reader().withType(CidsBeanPatch.class);
+        reader = CidsBeanPatchUtils.getInstance().getCidsBeanPatchReader();
         
         LOGGER.info("loading test suite with " + testNode.size() + " tests");
     }

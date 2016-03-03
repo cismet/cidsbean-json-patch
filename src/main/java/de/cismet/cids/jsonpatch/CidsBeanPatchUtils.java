@@ -7,12 +7,13 @@
 ****************************************************/
 package de.cismet.cids.jsonpatch;
 
+
 import Sirius.server.localserver.attribute.ObjectAttribute;
 import Sirius.server.middleware.types.MetaObject;
-
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -22,16 +23,10 @@ import com.fasterxml.jackson.databind.node.ValueNode;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jackson.jsonpointer.TokenResolver;
 import com.github.fge.jsonpatch.JsonPatchException;
-
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.io.WKTReader;
-
-import java.io.IOException;
-
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
@@ -46,6 +41,9 @@ import de.cismet.cids.jsonpatch.operation.cidsbean.MoveOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.RemoveOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.ReplaceOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.TestOperation;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * DOCUMENT ME!
@@ -62,6 +60,7 @@ public class CidsBeanPatchUtils {
     //~ Instance fields --------------------------------------------------------
 
     protected final ObjectMapper cidsBeanMapper = new ObjectMapper();
+    protected final ObjectReader cidsBeanPatchReader;
     protected final ResourceBundle resourceBundle = PropertyResourceBundle.getBundle(
             "de.cismet.cids.jsonpatch.messages");
 
@@ -71,18 +70,19 @@ public class CidsBeanPatchUtils {
      * Creates a new CidsBeanJsonPatchUtils object.
      */
     protected CidsBeanPatchUtils() {
-        cidsBeanMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        this.cidsBeanMapper.enable(SerializationFeature.INDENT_OUTPUT);
         final SimpleModule regularModule = new SimpleModule("NOIOC", new Version(1, 0, 0, null, null, null));
         regularModule.addSerializer(new CidsBeanJsonSerializer());
         regularModule.addDeserializer(CidsBean.class, new CidsBeanJsonDeserializer());
-        cidsBeanMapper.registerModule(regularModule);
-        cidsBeanMapper.registerSubtypes(
+        this.cidsBeanMapper.registerModule(regularModule);
+        this.cidsBeanMapper.registerSubtypes(
             new NamedType(AddOperation.class, AddOperation.OPERATION_NAME),
             new NamedType(CopyOperation.class, CopyOperation.OPERATION_NAME),
             new NamedType(MoveOperation.class, MoveOperation.OPERATION_NAME),
             new NamedType(RemoveOperation.class, RemoveOperation.OPERATION_NAME),
             new NamedType(ReplaceOperation.class, ReplaceOperation.OPERATION_NAME),
             new NamedType(TestOperation.class, TestOperation.OPERATION_NAME));
+        this.cidsBeanPatchReader = this.cidsBeanMapper.reader().withType(CidsBeanPatch.class);
     }
 
     //~ Methods ----------------------------------------------------------------
@@ -146,6 +146,11 @@ public class CidsBeanPatchUtils {
     public ObjectMapper getCidsBeanMapper() {
         return cidsBeanMapper;
     }
+    
+    public ObjectReader getCidsBeanPatchReader() {
+            return cidsBeanPatchReader;
+    }
+
 
     /**
      * DOCUMENT ME!
