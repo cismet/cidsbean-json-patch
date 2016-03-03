@@ -112,7 +112,7 @@ public abstract class CidsBeanPatchOperationTest {
     }
 
     @DataProvider
-    public final Iterator<Object[]> getOps() {
+    public final Iterator<Object[]> getOps() throws Exception {
         LOGGER.debug("loading " + ops.size() + " '" + this.operationName + "' success tests");
         final List<Object[]> list = Lists.newArrayList();
         for (final JsonNode node : ops) {
@@ -125,6 +125,7 @@ public abstract class CidsBeanPatchOperationTest {
             } catch (Exception ex) {
                 LOGGER.error("cannot deserialize beans for operation '" + this.operationName + "':"
                         + ex.getMessage(), ex);
+                throw ex;
             }
         }
 
