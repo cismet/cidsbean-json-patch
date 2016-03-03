@@ -1,0 +1,452 @@
+[
+    {
+        "comment": "empty patch list",
+        "bean": {
+            "$ref": "/SWITCHON.TAG/1534",
+            "id": 1534,
+            "name": "Open Datasets",
+            "taggroup": null
+        },
+        "patch": []
+    },
+    {
+        "comment": "toplevel object, numeric string",
+        "bean": {
+            "$ref": "/SWITCHON.TAG/1534",
+            "id": 1534,
+            "name": null,
+            "taggroup": null
+        },
+        "patch": [
+            {
+                "op": "add",
+                "path": "/name",
+                "value": "1"
+            }
+        ],
+        "expected": {
+            "$ref": "/SWITCHON.TAG/1534",
+            "id": 1534,
+            "name": "1",
+            "taggroup": null
+        }
+    },
+    {
+        "comment": "Add into composite value",
+        "bean": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": null,
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        },
+        "patch": [
+            {
+                "op": "add",
+                "path": "/taggroup/name",
+                "value": "keywords - X-CUAHSI"
+            }
+        ],
+        "expected": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "keywords - X-CUAHSI",
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        }
+    },
+    {
+        "comment": "remove taggroup name",
+        "bean": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "keywords - X-CUAHSI",
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        },
+        "patch": [
+            {
+                "op": "remove",
+                "path": "/taggroup/name"
+            }
+        ],
+        "expected": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": null,
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        }
+    },
+    {
+        "comment": "replace taggroup description",
+        "bean": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "keywords - X-CUAHSI",
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        },
+        "patch": [
+            {
+                "op": "replace",
+                "path": "/taggroup/description",
+                "value": "new description"
+            }
+        ],
+        "expected": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "keywords - X-CUAHSI",
+                "description": "new description"
+            },
+            "description": "n/a"
+        }
+    },
+    {
+        "comment": "spurious patch properties",
+        "bean": {
+            "$ref": "/SWITCHON.TAG/1534",
+            "id": 1534,
+            "name": "Open Datasets",
+            "taggroup": null
+        },
+        "patch": [
+            {
+                "op": "test",
+                "path": "/name",
+                "value": "Open Datasets",
+                "spurious": 1
+            }
+        ],
+        "expected": {
+            "$ref": "/SWITCHON.TAG/1534",
+            "id": 1534,
+            "name": "Open Datasets",
+            "taggroup": null
+        }
+    },
+    {
+        "bean": {
+            "$ref": "/SWITCHON.TAG/1534",
+            "id": 1534,
+            "name": null,
+            "taggroup": null
+        },
+        "patch": [
+            {
+                "op": "test",
+                "path": "/name",
+                "value": null
+            }
+        ],
+        "comment": "null value should still be valid obj property"
+    },
+    {
+        "bean": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "keywords - X-CUAHSI",
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        },
+        "patch": [
+            {
+                "op": "test",
+                "path": "/taggroup",
+                "value": {
+                    "$self": "/SWITCHON.TAGGROUP/169",
+                    "id": 169,
+                    "name": "keywords - X-CUAHSI",
+                    "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                }
+            }
+        ],
+        "comment": "test should pass - no error"
+    },
+    {
+        "bean": {
+            "$self": "/SWITCHON.TAGGROUP/169",
+            "id": 169,
+            "name": "keywords - X-CUAHSI",
+            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+        },
+        "patch": [
+            {
+                "op": "test",
+                "path": "/foo",
+                "value": [1, 2]
+            }
+        ],
+        "error": "test op should fail"
+    },
+    {
+        "comment": "multi test test",
+        "bean": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "keywords - X-CUAHSI",
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        },
+        "patch": [
+            {
+                "op": "test",
+                "path": "/id",
+                "value": 1406
+            },
+            {
+                "op": "test",
+                "path": "/name",
+                "value": "Flux, evaporation"
+            },
+            {
+                "op": "test",
+                "path": "/taggroup/name",
+                "value": "keywords - X-CUAHSI"
+            }
+        ]
+    },
+    {
+        "comment": "Move to same location",
+        "bean": {
+            "$self": "/SWITCHON.TAGGROUP/169",
+            "id": 169,
+            "name": "keywords - X-CUAHSI",
+            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+        },
+        "patch": [
+            {
+                "op": "move",
+                "from": "/name",
+                "path": "/name"
+            }
+        ],
+        "expected": {
+            "$self": "/SWITCHON.TAGGROUP/169",
+            "id": 169,
+            "name": "keywords - X-CUAHSI",
+            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+        }
+    },
+    {
+        "comment": "complex test",
+        "bean": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "Flux, evaporation",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "keywords - X-CUAHSI",
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        },
+        "patch": [
+            {
+                "op": "remove",
+                "path": "/taggroup/name"
+            },
+            {
+                "op": "replace",
+                "path": "/name",
+                "value": "new tag name"
+            },
+            {
+                "op": "copy",
+                "from": "/name",
+                "path": "/taggroup/name"
+            },
+            {
+                "op": "test",
+                "path": "/taggroup/name",
+                "value": "new tag name"
+            },
+            {
+                "op": "replace",
+                "path": "/taggroup/name",
+                "value": "new taggroup name"
+            }
+        ],
+        "expected": {
+            "$self": "/SWITCHON.TAG/1406",
+            "id": 1406,
+            "name": "new tag name",
+            "taggroup": {
+                "$self": "/SWITCHON.TAGGROUP/169",
+                "id": 169,
+                "name": "new taggroup name",
+                "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+            },
+            "description": "n/a"
+        }
+    },
+    {
+        "comment": "complex array operations",
+        "bean": {
+            "$self": "/SWITCHON.METADATA/14458",
+            "id": 14458,
+            "name": "Basic Lineage Meta-Data",
+            "tags": [],
+            "description": "NO Data Lineage",
+            "contact": null,
+            "type": null,
+            "language": {
+                "$self": "/SWITCHON.TAG/145",
+                "id": 145,
+                "name": "eng",
+                "taggroup": {
+                    "$self": "/SWITCHON.TAGGROUP/157",
+                    "id": 157,
+                    "name": "language",
+                    "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                },
+                "description": "English"
+            },
+            "standard": {
+                "$self": "/SWITCHON.TAG/1387",
+                "id": 1387,
+                "name": "SWITCH-ON SIM",
+                "taggroup": {
+                    "$self": "/SWITCHON.TAGGROUP/159",
+                    "id": 159,
+                    "name": "meta-data standard",
+                    "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                },
+                "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+            },
+            "uuid": null,
+            "contentlocation": null,
+            "creationdate": 1456139550080,
+            "contenttype": null,
+            "content": null
+        },
+        "patch": [
+            {
+                "op": "move",
+                "path": "/tags/-",
+                "from": "/standard"
+            },
+            {
+                "op": "copy",
+                "path": "/tags/0",
+                "from": "/language"
+            },
+            {
+                "op": "test",
+                "path": "/tags/1/taggroup/name",
+                "value": "meta-data standard"
+            },
+            {
+                "op": "copy",
+                "path": "/standard",
+                "from": "/tags/0"
+            },
+            {
+                "op": "test",
+                "path": "/tags/0/taggroup/name",
+                "value": "language"
+            },
+            {
+                "op": "test",
+                "path": "/standard/taggroup/name",
+                "value": "language"
+            }, {
+                "op": "remove",
+                "path": "/standard"
+            }, {
+                "op": "copy",
+                "path": "/standard",
+                "from": "/tags/1"
+            }, {
+                "op": "replace",
+                "path": "/tags/0/name",
+                "value": "new name"
+            }
+        ],
+        "expected": {
+            "$self": "/SWITCHON.METADATA/14458",
+            "id": 14458,
+            "name": "Basic Lineage Meta-Data",
+            "tags": [{
+                    "$self": "/SWITCHON.TAG/145",
+                    "id": 145,
+                    "name": "new name",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/157",
+                        "id": 157,
+                        "name": "language",
+                        "description": "The language(s) used within the resource or in which the metadata elements are expressed.  The value domain of this tag is limited to the languages defined in ISO 639-2."
+                    },
+                    "description": "English"
+                }, {
+                    "$self": "/SWITCHON.TAG/1387",
+                    "id": 1387,
+                    "name": "SWITCH-ON SIM",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/159",
+                        "id": 159,
+                        "name": "meta-data standard",
+                        "description": "Official standard on which the meta-data record is based (open group with some predefined tags)."
+                    },
+                    "description": "Meta-Data Record compliant to the Standard Information Model (SIM) of the Spatial Information Platform (SIP) of the EU FP7 project SWITCH-ON."
+                }],
+            "description": "NO Data Lineage",
+            "contact": null,
+            "type": null,
+            "language": {
+                "$ref": "/SWITCHON.TAG/145"
+            },
+            "standard": {
+                "$ref": "/SWITCHON.TAG/1387"
+            },
+            "uuid": null,
+            "contentlocation": null,
+            "creationdate": 1456139550080,
+            "contenttype": null,
+            "content": null
+        }
+    }
+
+
+]

@@ -54,7 +54,7 @@ import java.util.ResourceBundle;
 
 import de.cismet.cids.dynamics.CidsBean;
 
-import de.cismet.cids.jsonpatch.CidsBeanJsonPatchUtils;
+import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
 
 import de.cismet.commons.classloading.BlacklistClassloading;
@@ -69,7 +69,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
     //~ Static fields/initializers ---------------------------------------------
 
     protected static final Logger LOGGER = Logger.getLogger(AddOperation.class);
-    protected static final CidsBeanJsonPatchUtils UTILS = CidsBeanJsonPatchUtils.getInstance();
+    protected static final CidsBeanPatchUtils UTILS = CidsBeanPatchUtils.getInstance();
     protected static final ResourceBundle RESOURCE_BUNDLE = UTILS.getResourceBundle();
 
     //~ Instance fields --------------------------------------------------------

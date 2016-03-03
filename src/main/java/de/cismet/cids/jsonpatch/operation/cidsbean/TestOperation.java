@@ -15,13 +15,11 @@ import com.github.fge.jackson.JsonNumEquals;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonpatch.JsonPatchException;
 
-import java.io.IOException;
-
 import java.util.ResourceBundle;
 
 import de.cismet.cids.dynamics.CidsBean;
 
-import de.cismet.cids.jsonpatch.CidsBeanJsonPatchUtils;
+import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
 
 /**
@@ -41,7 +39,7 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
 
     //~ Static fields/initializers ---------------------------------------------
 
-    protected static final ResourceBundle RESOURCE_BUNDLE = CidsBeanJsonPatchUtils.getInstance().getResourceBundle();
+    protected static final ResourceBundle RESOURCE_BUNDLE = CidsBeanPatchUtils.getInstance().getResourceBundle();
 
     //~ Constructors -----------------------------------------------------------
 
@@ -61,7 +59,7 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
 
     @Override
     public CidsBean apply(final CidsBean cidsBean) throws JsonPatchException {
-        final JsonNode node = CidsBeanJsonPatchUtils.getInstance().cidsBeanToJsonNode(cidsBean);
+        final JsonNode node = CidsBeanPatchUtils.getInstance().cidsBeanToJsonNode(cidsBean);
         final JsonNode tested = super.apply(node);
 
         if (tested != null) {
@@ -70,7 +68,7 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
             return null;
         }
 
-//        final String cidsBeanPointer = CidsBeanJsonPatchUtils.getInstance().jsonPointerToCidsBeanPointer(this.path);
+//        final String cidsBeanPointer = CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(this.path);
 //        final Object tested;
 //        if(cidsBeanPointer != null && !cidsBeanPointer.isEmpty()) {
 //            tested =  cidsBean.getProperty(cidsBeanPointer);
@@ -82,7 +80,7 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
 //            throw new JsonPatchException("jsonPatch.noSuchPath");
 //        }
 //
-//        final JsonNode testedNode = CidsBeanJsonPatchUtils.getInstance().getCidsBeanMapper().valueToTree(value);
+//        final JsonNode testedNode = CidsBeanPatchUtils.getInstance().getCidsBeanMapper().valueToTree(value);
 //
 //
 //        if (!tested.equals(value))

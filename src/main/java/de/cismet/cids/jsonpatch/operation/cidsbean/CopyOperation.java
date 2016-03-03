@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 import de.cismet.cids.dynamics.CidsBean;
 
-import de.cismet.cids.jsonpatch.CidsBeanJsonPatchUtils;
+import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
 
 /**
@@ -35,7 +35,7 @@ public class CopyOperation extends com.github.fge.jsonpatch.operation.CopyOperat
 
     //~ Static fields/initializers ---------------------------------------------
 
-    protected static final CidsBeanJsonPatchUtils UTILS = CidsBeanJsonPatchUtils.getInstance();
+    protected static final CidsBeanPatchUtils UTILS = CidsBeanPatchUtils.getInstance();
     protected static final ResourceBundle RESOURCE_BUNDLE = UTILS.getResourceBundle();
 
     //~ Constructors -----------------------------------------------------------
