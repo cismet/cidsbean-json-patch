@@ -14,16 +14,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 import com.github.fge.jackson.jsonpointer.JsonPointer;
-import com.github.fge.jackson.jsonpointer.TokenResolver;
 import com.github.fge.jsonpatch.JsonPatchException;
-
-import com.google.common.collect.Iterables;
 
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 

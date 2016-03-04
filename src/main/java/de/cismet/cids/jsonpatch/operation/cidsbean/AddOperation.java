@@ -81,7 +81,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
     //~ Constructors -----------------------------------------------------------
 
     /**
-     * Creates a new AddOperation object.
+     * Creates a new AddOperation valueObject.
      *
      * @param  path   DOCUMENT ME!
      * @param  value  DOCUMENT ME!
@@ -93,7 +93,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
     }
 
     /**
-     * Creates a new AddOperation object.
+     * Creates a new AddOperation valueObject.
      *
      * @param  path       DOCUMENT ME!
      * @param  value      DOCUMENT ME!
@@ -133,7 +133,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
         final String cidsBeanParentPointer = UTILS.jsonPointerToCidsBeanPointer(this.path.parent());
         final Object parentObject;
 
-        // parent is the root object
+        // parent is the root valueObject
         if ((cidsBeanParentPointer != null) && !cidsBeanParentPointer.isEmpty()) {
             parentObject = cidsBean.getProperty(cidsBeanParentPointer);
         } else {
@@ -218,13 +218,20 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                             + ": " + index + " (array size: " + size + ")");
                 throw new JsonPatchException(RESOURCE_BUNDLE.getString(
                         "jsonPatch.noSuchIndex"));
-            } else if (UTILS.isCidsBean(value)) {
+            }
+
+            if (UTILS.isCidsBean(value)) {
                 final CidsBean cidsBean = (CidsBean)UTILS.deserializeAndVerifyCidsBean(this.value);
                 if (this.overwrite) {
                     parentList.set(index, cidsBean);
                 } else {
                     parentList.add(index, cidsBean);
                 }
+            } else if (UTILS.isCidsBeanArray(value)) {
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex")
+                            + ": arrays cannot be used as value in conjunction with an array index");
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
+                        "jsonPatch.invalidValueForArrayIndex"));
             } else {
                 LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex")
                             + ": " + value);
@@ -252,8 +259,8 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                     "jsonPatch.noSuchProperty"));
         }
 
-        final Object object = UTILS.deserializeAndVerifyCidsBean(this.value);
-        if (CidsBean.class.isAssignableFrom(object.getClass())) {
+        final Object valueObject = UTILS.deserializeAndVerifyCidsBean(this.value);
+        if (CidsBean.class.isAssignableFrom(valueObject.getClass())) {
             if (!objectAttribute.getMai().isForeignKey()) {
                 LOGGER.error(RESOURCE_BUNDLE.getString(
                         "jsonPatch.propertyValueMissmatch") + ": "
@@ -270,7 +277,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
             }
 
             try {
-                parentBean.setProperty(property, (CidsBean)object);
+                parentBean.setProperty(property, (CidsBean)valueObject);
             } catch (Exception ex) {
                 LOGGER.error(RESOURCE_BUNDLE.getString(
                         "jsonPatch.setPropertyFailed")
@@ -278,7 +285,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                 throw new JsonPatchException(RESOURCE_BUNDLE.getString(
                         "jsonPatch.setPropertyFailed"), ex);
             }
-        } else if (List.class.isAssignableFrom(object.getClass())) {
+        } else if (List.class.isAssignableFrom(valueObject.getClass())) {
             final List<CidsBean> beanCollectionProperty = parentBean.getBeanCollectionProperty(property);
             if (!objectAttribute.getMai().isArray() || (beanCollectionProperty == null)) {
                 LOGGER.error(RESOURCE_BUNDLE.getString(
@@ -295,11 +302,11 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                         "jsonPatch.propertyNotEmpty"));
             } else if (this.overwrite) {
                 beanCollectionProperty.clear();
-                beanCollectionProperty.addAll((List<CidsBean>)object);
+                beanCollectionProperty.addAll((List<CidsBean>)valueObject);
             } else {
-                beanCollectionProperty.addAll((List<CidsBean>)object);
+                beanCollectionProperty.addAll((List<CidsBean>)valueObject);
             }
-        } else if (ValueNode.class.isAssignableFrom(object.getClass())) {
+        } else if (ValueNode.class.isAssignableFrom(valueObject.getClass())) {
             if (!this.overwrite && (parentBean.getProperty(property) != null)) {
                 LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty")
                             + ": " + property);
@@ -315,7 +322,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                         "jsonPatch.noSuchProperty"));
             }
 
-            final ValueNode valueNode = (ValueNode)object;
+            final ValueNode valueNode = (ValueNode)valueObject;
 
             try {
                 if (valueNode.isNumber()) {

@@ -7,9 +7,9 @@
 ****************************************************/
 package de.cismet.cids.jsonpatch;
 
-
 import Sirius.server.localserver.attribute.ObjectAttribute;
 import Sirius.server.middleware.types.MetaObject;
+
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,15 +18,23 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.ValueNode;
 
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jackson.jsonpointer.TokenResolver;
 import com.github.fge.jsonpatch.JsonPatchException;
+
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.io.WKTReader;
+
+import java.io.IOException;
+
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
@@ -41,9 +49,6 @@ import de.cismet.cids.jsonpatch.operation.cidsbean.MoveOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.RemoveOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.ReplaceOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.TestOperation;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * DOCUMENT ME!
@@ -146,11 +151,15 @@ public class CidsBeanPatchUtils {
     public ObjectMapper getCidsBeanMapper() {
         return cidsBeanMapper;
     }
-    
-    public ObjectReader getCidsBeanPatchReader() {
-            return cidsBeanPatchReader;
-    }
 
+    /**
+     * DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public ObjectReader getCidsBeanPatchReader() {
+        return cidsBeanPatchReader;
+    }
 
     /**
      * DOCUMENT ME!
@@ -251,6 +260,45 @@ public class CidsBeanPatchUtils {
     }
 
     /**
+     * Returns a complete cids bean or a cids bean reference depending on the update status of the provided cids bean
+     * and the underlying meta object, respectively.
+     *
+     * @param   cidsBean  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     *
+     * @throws  JsonPatchException  DOCUMENT ME!
+     */
+    protected JsonNode cidsBeanToJsonNodeOrReference(final CidsBean cidsBean) throws JsonPatchException {
+        if (cidsBean.hasArtificialChangeFlag() || (cidsBean.getMetaObject().getStatus() != MetaObject.NO_STATUS)) {
+            return this.cidsBeanToJsonNode(cidsBean);
+        } else {
+            return this.cidsBeanToJsonNodeReference(cidsBean);
+        }
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   cidsBean  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     *
+     * @throws  JsonPatchException  DOCUMENT ME!
+     */
+    protected JsonNode cidsBeanToJsonNodeReference(final CidsBean cidsBean) throws JsonPatchException {
+        final CidsBeanInfo cidsBeanInfo = cidsBean.getCidsBeanInfo();
+        if (cidsBeanInfo.getObjectKey().equals("-1")) {
+            throw new JsonPatchException(resourceBundle.getString("jsonPatch.valueNoReferenceBean"));
+        }
+
+        final ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put(CidsBeanInfo.JSON_CIDS_OBJECT_KEY_REFERENCE_IDENTIFIER, cidsBeanInfo.getJsonObjectKey());
+
+        return node;
+    }
+
+    /**
      * DOCUMENT ME!
      *
      * @param   node  DOCUMENT ME!
@@ -315,15 +363,12 @@ public class CidsBeanPatchUtils {
                     throw new JsonPatchException(resourceBundle.getString("jsonPatch.valueNoReferenceBean"));
                 } else {
                     final CidsBean cidsBean = this.jsonNodeToCidsBean(value);
+                    cidsBean.getMetaObject().setStatus(MetaObject.NO_STATUS);
                     return cidsBean;
                 }
             } else {
-                final CidsBeanInfo cidsBeanInfo = new CidsBeanInfo(value.get(
-                            CidsBeanInfo.JSON_CIDS_OBJECT_KEY_IDENTIFIER).textValue());
                 final CidsBean cidsBean = this.jsonNodeToCidsBean(value);
-                if (cidsBeanInfo.getObjectKey().equals("-1")) {
-                    this.applyCidsBeanUpdateStatus(cidsBean, false);
-                }
+                this.applyCidsBeanUpdateStatus(cidsBean, true);
                 return cidsBean;
             }
         } else if (this.isCidsBeanArray(value)) {
