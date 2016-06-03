@@ -16,7 +16,6 @@
  * - LGPL 3.0: https://www.gnu.org/licenses/lgpl-3.0.txt
  * - ASL 2.0: http://www.apache.org/licenses/LICENSE-2.0.txt
  */
-
 package de.cismet.cids.jsonpatch;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -38,29 +37,27 @@ import static org.testng.Assert.*;
 import org.testng.log4testng.Logger;
 
 @Test
-public class CidsBeanPatchTestSuite
-{
+public class CidsBeanPatchTestSuite {
+
     protected final JsonNode testNode;
     protected final ObjectReader reader;
-    
+
     protected final static Logger LOGGER = Logger.getLogger(CidsBeanPatchTestSuite.class);
-    
+
     protected final static ObjectMapper OBJECT_MAPPER = CidsBeanPatchUtils.getInstance().getCidsBeanMapper();
     protected final static ResourceBundle RESOURCE_BUNDLE = CidsBeanPatchUtils.getInstance().getResourceBundle();
 
     public CidsBeanPatchTestSuite()
-        throws IOException
-    {
+            throws IOException {
         testNode = JsonLoader.fromResource("/de/cismet/cids/jsonpatch/testsuite.json");
         reader = CidsBeanPatchUtils.getInstance().getCidsBeanPatchReader();
-        
+
         LOGGER.info("loading test suite with " + testNode.size() + " tests");
     }
 
     @DataProvider
     public Iterator<Object[]> getTests()
-        throws Exception
-    {
+            throws Exception {
         final List<Object[]> list = Lists.newArrayList();
 
         String comment = null;
@@ -69,25 +66,27 @@ public class CidsBeanPatchTestSuite
         CidsBean bean, expected;
 
         int i = 0;
-        for (final JsonNode element: testNode) {
+        for (final JsonNode element : testNode) {
             try {
-            if (!element.has("patch"))
-                continue;
-            
-            comment = element.hasNonNull("comment") ? element.get("comment").textValue() 
-                    : (element.hasNonNull("error") ? element.get("error").textValue() : ("patch #" + i));
+                if (!element.has("patch")) {
+                    continue;
+                }
 
-            patch = reader.readValue((element.get("patch")));
-            
-            bean = OBJECT_MAPPER.treeToValue(element.get("bean"), CidsBean.class);
-            
-            expected = element.hasNonNull("expected") ? OBJECT_MAPPER.treeToValue(element.get("expected"), CidsBean.class) : null;
+                comment = element.hasNonNull("comment") ? element.get("comment").textValue()
+                        : (element.hasNonNull("error") ? element.get("error").textValue() : ("patch #" + i));
 
-            if (expected == null)
-                expected = bean;
-            valid = !element.has("error");
-            list.add(new Object[]{comment, bean, patch, expected, valid});
-            
+                patch = reader.readValue((element.get("patch")));
+
+                bean = OBJECT_MAPPER.treeToValue(element.get("bean"), CidsBean.class);
+
+                expected = element.hasNonNull("expected") ? OBJECT_MAPPER.treeToValue(element.get("expected"), CidsBean.class) : null;
+
+                if (expected == null) {
+                    expected = bean;
+                }
+                valid = !element.has("error");
+                list.add(new Object[]{comment, bean, patch, expected, valid});
+
             } catch (Exception ex) {
                 LOGGER.error("cannot deserialize beans for patch #" + i + " ("
                         + comment + "): "
@@ -103,32 +102,30 @@ public class CidsBeanPatchTestSuite
 
     @Test(dataProvider = "getTests")
     public void testsFromTestSuitePass(final String comment, final CidsBean bean,
-        final CidsBeanPatch patch, final CidsBean expected, final boolean valid)
-    {
+            final CidsBeanPatch patch, final CidsBean expected, final boolean valid) {
         try {
             final CidsBean actual = patch.apply(bean);
             if (!valid) {
                 fail(comment + " Test was expected to fail!!");
                 LOGGER.error(comment + " Test was expected to fail!!");
             }
-                
+
             final String actualString = actual.toJSONString(true);
             final String expectedString = expected.toJSONString(true);
-            
+
             assertEquals(actualString, expectedString);
-            
-        } catch(AssertionError ae) {
+
+        } catch (AssertionError ae) {
             LOGGER.error(comment + "test failed with: " + ae.getMessage());
             throw ae;
-        }
-        catch (JsonPatchException ignored) {
+        } catch (JsonPatchException ignored) {
             if (valid) {
                 LOGGER.error(comment + " Test was expected to succeed!!", ignored);
                 fail(comment + " Test was expected to succeed!!");
             } else {
                 LOGGER.debug(comment + " Test failed as expected: " + ignored.getMessage());
             }
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             LOGGER.error(comment + " Test faild with unexpected exception!!", ex);
             fail(comment + " Test faild with unexpected exception!!");
         }

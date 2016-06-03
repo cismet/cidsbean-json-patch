@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Scanner;
 import org.testng.log4testng.Logger;
@@ -31,7 +30,7 @@ public class OfflineMetaClassCacheService implements MetaClassCacheService {
     protected static final ObjectMapper MAPPER = new ObjectMapper(new JsonFactory());
 
     public OfflineMetaClassCacheService() throws Exception {
-        
+
         if (allClassesById.isEmpty() && allClassesByTableName.isEmpty()) {
             LOGGER.info("loading meta classes");
             final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -48,8 +47,7 @@ public class OfflineMetaClassCacheService implements MetaClassCacheService {
                 final String jsonFile = "de/cismet/cids/jsonpatch/classes/" + scanner.next();
                 LOGGER.info("loading cids class from json file " + jsonFile);
                 try {
-                    
-                    
+
                     final CidsClass cidsClass = MAPPER.readValue(
                             new BufferedReader(
                                     new InputStreamReader(classLoader.getResourceAsStream(jsonFile))),
@@ -82,14 +80,14 @@ public class OfflineMetaClassCacheService implements MetaClassCacheService {
 
     @Override
     public HashMap<String, MetaClass> getAllClasses(final String domain) {
-        
+
         // this is madness!
         final HashMap<String, MetaClass> allClasses = new HashMap<String, MetaClass>();
-        for(Integer classId:allClassesById.keySet()) {
-            final String classKey = domain+classId;
+        for (Integer classId : allClassesById.keySet()) {
+            final String classKey = domain + classId;
             allClasses.put(classKey, allClassesById.get(classId));
         }
-        
+
         return allClasses;
     }
 
