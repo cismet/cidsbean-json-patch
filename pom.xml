@@ -79,14 +79,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.box</groupId>
+            <groupId>de.cismet</groupId>
             <artifactId>json-patch</artifactId>
-            <version>1.13-SNAPSHOT</version>
+            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cids-server</artifactId>
-            <version>2.0-SNAPSHOT</version>
+            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -128,7 +128,7 @@
         <dependency>
             <groupId>de.cismet.commons</groupId>
             <artifactId>cismet-commons</artifactId>
-            <version>2.0-SNAPSHOT</version>
+            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -166,9 +166,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
+                <!--
                 <configuration>
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
+                -->
             </plugin>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
