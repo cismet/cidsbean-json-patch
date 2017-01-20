@@ -17,8 +17,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.cismet.cids</groupId>
@@ -28,7 +27,7 @@
     
     <groupId>de.cismet.cids</groupId>
     <artifactId>cidsbean-json-patch</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>4.1-SNAPSHOT</version>
     <packaging>jar</packaging>
  
     <name>cidsbean-json-patch</name>
@@ -51,7 +50,8 @@
         <connection>scm:git:git@github.com:cismet/cidsbean-json-patch.git</connection>
         <developerConnection>scm:git:git@github.com:cismet/cidsbean-json-patch.git</developerConnection>
         <url>git@github.com:cismet/cidsbean-json-patch.git</url>
-    </scm>
+      <tag>HEAD</tag>
+  </scm>
   
     <developers>
         <developer>
@@ -79,14 +79,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.box</groupId>
+            <groupId>de.cismet</groupId>
             <artifactId>json-patch</artifactId>
-            <version>1.13-SNAPSHOT</version>
+            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cids-server</artifactId>
-            <version>2.0-SNAPSHOT</version>
+            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -128,7 +128,7 @@
         <dependency>
             <groupId>de.cismet.commons</groupId>
             <artifactId>cismet-commons</artifactId>
-            <version>2.0-SNAPSHOT</version>
+            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -166,9 +166,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
+                <!--
                 <configuration>
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
+                -->
             </plugin>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
