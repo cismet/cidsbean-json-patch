@@ -1,0 +1,1183 @@
+{
+    "errors": [{
+            "op": {
+                "op": "move",
+                "path": "/type/taggroup/name",
+                "from": "/type/taggroup"
+            },
+            "bean": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": null,
+                "spatialcoverage": null,
+                "todate": null,
+                "srid": null,
+                "conformity": null,
+                "language": null,
+                "description": "the from path must not be an immediate parent of the to path",
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": null,
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/221",
+                        "id": 221,
+                        "name": "pointOfContact",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/165",
+                            "id": 165,
+                            "name": "role",
+                            "description": "Function performed by the responsible party (fixed group, standard codelist)."
+                        },
+                        "description": "Party that can be contacted for acquiring knowledge about or acquisition of the data resource. Person or organization that can be contacted to acquire data on the resource."
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": null,
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [],
+                "accesslimitations": null,
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": null,
+                "publicationdate": null
+            },
+            "message": "jsonPatch.invalidFromPath"
+        }, {
+            "op": {
+                "op": "move",
+                "path": "/",
+                "from": "/taggroup/$ref"
+            },
+            "bean": {
+                "$self": "/SWITCHON.TAG/1534",
+                "id": 1534,
+                "name": "Open Datasets",
+                "taggroup": {
+                    "$ref": "/SWITCHON.TAGGROUP/149"
+                }
+            },
+            "message": "jsonPatch.rootNodeNotPermitted"
+        }, {
+            "op": {
+                "op": "move",
+                "path": "/tag/name",
+                "from": "/taggroup/name"
+            },
+            "bean": {
+                "$self": "/SWITCHON.TAG/1534",
+                "id": 1534,
+                "name": null,
+                "taggroup": {
+                    "$ref": "/SWITCHON.TAGGROUP/149"
+                }
+            },
+            "message": "jsonPatch.nullValue"
+        }
+    ],
+    "ops": [
+        {
+            "op": {
+                "op": "move",
+                "path": "/tags/-",
+                "from": "/tags/0"
+            },
+            "bean": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": null,
+                "spatialcoverage": null,
+                "todate": null,
+                "srid": null,
+                "conformity": null,
+                "language": null,
+                "description": "OPeNDAP TEST DATASET",
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": null,
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/221",
+                        "id": 221,
+                        "name": "pointOfContact",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/165",
+                            "id": 165,
+                            "name": "role",
+                            "description": "Function performed by the responsible party (fixed group, standard codelist)."
+                        },
+                        "description": "Party that can be contacted for acquiring knowledge about or acquisition of the data resource. Person or organization that can be contacted to acquire data on the resource."
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": null,
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [],
+                "accesslimitations": null,
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": null,
+                "publicationdate": null
+            },
+            "expected": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": null,
+                "spatialcoverage": null,
+                "todate": null,
+                "srid": null,
+                "conformity": null,
+                "language": null,
+                "description": "OPeNDAP TEST DATASET",
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": null,
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/221",
+                        "id": 221,
+                        "name": "pointOfContact",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/165",
+                            "id": 165,
+                            "name": "role",
+                            "description": "Function performed by the responsible party (fixed group, standard codelist)."
+                        },
+                        "description": "Party that can be contacted for acquiring knowledge about or acquisition of the data resource. Person or organization that can be contacted to acquire data on the resource."
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": null,
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [],
+                "accesslimitations": null,
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": null,
+                "publicationdate": null
+            }
+        },
+        {
+            "op": {
+                "op": "move",
+                "path": "/description",
+                "from": "/representation/0/contenttype/taggroup/description"
+            },
+            "bean": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": null,
+                "spatialcoverage": null,
+                "todate": null,
+                "srid": null,
+                "conformity": null,
+                "language": null,
+                "description": null,
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": null,
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/221",
+                        "id": 221,
+                        "name": "pointOfContact",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/165",
+                            "id": 165,
+                            "name": "role",
+                            "description": "Function performed by the responsible party (fixed group, standard codelist)."
+                        },
+                        "description": "Party that can be contacted for acquiring knowledge about or acquisition of the data resource. Person or organization that can be contacted to acquire data on the resource."
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": null,
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [],
+                "accesslimitations": null,
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": null,
+                "publicationdate": null
+            },
+            "expected": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": null,
+                "spatialcoverage": null,
+                "todate": null,
+                "srid": null,
+                "conformity": null,
+                "language": null,
+                "description": "MIME Type of the representation (open group which several predefined tags).",
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": null,
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/221",
+                        "id": 221,
+                        "name": "pointOfContact",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/165",
+                            "id": 165,
+                            "name": "role",
+                            "description": "Function performed by the responsible party (fixed group, standard codelist)."
+                        },
+                        "description": "Party that can be contacted for acquiring knowledge about or acquisition of the data resource. Person or organization that can be contacted to acquire data on the resource."
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": null
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": null,
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [],
+                "accesslimitations": null,
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": null,
+                "publicationdate": null
+            }
+        },
+        {
+            "op": {
+                "op": "move",
+                "path": "/contact/role",
+                "from": "/representation[0]/function"
+            },
+            "bean": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": null,
+                "spatialcoverage": null,
+                "todate": null,
+                "srid": null,
+                "conformity": null,
+                "language": null,
+                "description": null,
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": null,
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": null
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": {
+                            "$self": "/SWITCHON.TAG/72",
+                            "id": 72,
+                            "name": "service",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/152",
+                                "id": 152,
+                                "name": "function",
+                                "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                            },
+                            "description": "link is service endpoint"
+                        },
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": null,
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [],
+                "accesslimitations": null,
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": null,
+                "publicationdate": null
+            },
+            "expected": {
+                "$self": "/SWITCHON.RESOURCE/11973",
+                "id": 11973,
+                "fromdate": null,
+                "accessconditions": null,
+                "spatialcoverage": null,
+                "todate": null,
+                "srid": null,
+                "conformity": null,
+                "language": null,
+                "description": null,
+                "type": {
+                    "$self": "/SWITCHON.TAG/1535",
+                    "id": 1535,
+                    "name": "open data",
+                    "taggroup": {
+                        "$self": "/SWITCHON.TAGGROUP/164",
+                        "id": 164,
+                        "name": "resource type",
+                        "description": "SIP internal type of the resource (fixed group)."
+                    },
+                    "description": "This is data available as open data from any source on the Internet. The data has been registered through the switchon website"
+                },
+                "location": null,
+                "topiccategory": null,
+                "creationdate": null,
+                "name": "OPeNDAP TEST DATASET",
+                "licensestatement": "Other License Statement",
+                "tags": [{
+                        "$self": "/SWITCHON.TAG/1404",
+                        "id": 1404,
+                        "name": "Flux, discharge",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1405",
+                        "id": 1405,
+                        "name": "Flux, dissolved gas",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1406",
+                        "id": 1406,
+                        "name": "Flux, evaporation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }, {
+                        "$self": "/SWITCHON.TAG/1407",
+                        "id": 1407,
+                        "name": "Flux, precipitation",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/169",
+                            "id": 169,
+                            "name": "keywords - X-CUAHSI",
+                            "description": "X-CUAHSI keywords build on a hierarchical keyword selection from the hydrologic ontology developed by CUAHSI, with additinal hierarchical keywords for relevant non-hydrosphere data."
+                        },
+                        "description": "n/a"
+                    }],
+                "contact": {
+                    "$self": "/SWITCHON.CONTACT/101",
+                    "id": 101,
+                    "organisation": "SWITCH-ON",
+                    "name": "John Doe",
+                    "description": "SWITCH-ON DOI",
+                    "email": "doe@water-switch-on.eu",
+                    "url": "http://www.water-switch-on.eu/",
+                    "role": {
+                        "$self": "/SWITCHON.TAG/72",
+                        "id": 72,
+                        "name": "service",
+                        "taggroup": {
+                            "$self": "/SWITCHON.TAGGROUP/152",
+                            "id": 152,
+                            "name": "function",
+                            "description": "Function that can be perfomred following the contentLocation link to the resource representation (fixed group, standard codelist)."
+                        },
+                        "description": "link is service endpoint"
+                    }
+                },
+                "geography": null,
+                "representation": [{
+                        "$self": "/SWITCHON.REPRESENTATION/12019",
+                        "id": 12019,
+                        "name": "OPeNDAP TEST DATASET OPeNDAP",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/dodsC/thredds/netcdftest/scanfish_turbidity.nc.html",
+                        "tags": [],
+                        "contenttype": {
+                            "$self": "/SWITCHON.TAG/40",
+                            "id": 40,
+                            "name": "application/json",
+                            "taggroup": {
+                                "$self": "/SWITCHON.TAGGROUP/151",
+                                "id": 151,
+                                "name": "content type",
+                                "description": "MIME Type of the representation (open group which several predefined tags)."
+                            },
+                            "description": "JSON (Java Script Object Notation)"
+                        },
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }, {
+                        "$self": "/SWITCHON.REPRESENTATION/12018",
+                        "id": 12018,
+                        "name": "OPeNDAP TEST DATASET",
+                        "description": null,
+                        "content": null,
+                        "type": null,
+                        "function": null,
+                        "protocol": null,
+                        "applicationprofile": null,
+                        "uuid": null,
+                        "temporalresolution": null,
+                        "spatialresolution": null,
+                        "spatialscale": null,
+                        "contentlocation": "http://dl-ng003.xtr.deltares.nl/thredds/catalog/thredds/netcdftest/catalog.html",
+                        "tags": [],
+                        "contenttype": null,
+                        "uploadstatus": null,
+                        "uploadmessage": null
+                    }],
+                "lastmodificationdate": null,
+                "metadata": [],
+                "accesslimitations": null,
+                "uuid": "82b0e945-a2d2-4446-90a3-7b22860a1b5d",
+                "collection": null,
+                "publicationdate": null
+            }
+        }
+    ]
+}
