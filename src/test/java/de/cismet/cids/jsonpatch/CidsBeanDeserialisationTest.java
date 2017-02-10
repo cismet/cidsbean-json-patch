@@ -75,16 +75,4 @@ public class CidsBeanDeserialisationTest {
             throw ex;
         }
     }
-
-    public static void main(String args[]) {
-        final CidsBeanDeserialisationTest cidsBeanDeserialisationTest = new CidsBeanDeserialisationTest();
-        try {
-            cidsBeanDeserialisationTest.createNewCidsBeanFromJSON();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.exit(1);
-        }
-
-        System.exit(0);
-    }
 }
