@@ -161,6 +161,10 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.vividsolutions</groupId>
+            <artifactId>jts</artifactId>
+        </dependency>
         <!-- END: managed dependencies -->
 
         <dependency>
@@ -174,9 +178,8 @@
             <version>16.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.vividsolutions</groupId>
-            <artifactId>jts</artifactId>
-            <version>1.12</version>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
         
         <!-- BEGIN: Test dependencies -->
@@ -197,7 +200,7 @@
             <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
-         <!-- END: json-patch TESTS -->
+        <!-- END: json-patch TESTS -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -210,11 +213,6 @@
             <scope>test</scope>
         </dependency> 
         <!-- END: TEST dependencies -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.4</version>
-        </dependency>
     </dependencies>      
      
     <build>
