@@ -1,10 +1,10 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 package de.cismet.cids.jsonpatch.operation.cidsbean;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -12,19 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonpatch.JsonPatchException;
-
-import org.apache.log4j.Logger;
-
-import java.util.List;
-import java.util.ResourceBundle;
-
 import de.cismet.cids.dynamics.CidsBean;
-
 import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
+import java.util.List;
+import java.util.ResourceBundle;
+import org.apache.log4j.Logger;
 
 /**
  * DOCUMENT ME!
@@ -49,8 +44,7 @@ public class MoveOperation extends com.github.fge.jsonpatch.operation.MoveOperat
      * @param  path  DOCUMENT ME!
      */
     @JsonCreator
-    public MoveOperation(@JsonProperty("from") final JsonPointer from,
-            @JsonProperty("path") final JsonPointer path) {
+    public MoveOperation(@JsonProperty("from") final JsonPointer from, @JsonProperty("path") final JsonPointer path) {
         super(from, path);
     }
 
@@ -63,16 +57,21 @@ public class MoveOperation extends com.github.fge.jsonpatch.operation.MoveOperat
         }
 
         if (path.toString().indexOf(from.toString()) == 0) {
-            LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidFromPath")
-                        + ": from=" + this.from + ", to=" + this.path);
+            LOGGER.error(
+                RESOURCE_BUNDLE.getString("jsonPatch.invalidFromPath") + ": from=" + this.from + ", to=" + this.path
+            );
             throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.invalidFromPath"));
         }
 
         // final TokenResolver<JsonNode> token = Iterables.removeAll(value, parentList).getLast(path);
         final String cidsBeanToPointer = UTILS.jsonPointerToCidsBeanPointer(this.path);
         final String cidsBeanFromPointer = UTILS.jsonPointerToCidsBeanPointer(this.from);
-        if ((cidsBeanToPointer == null) || cidsBeanToPointer.isEmpty()
-                    || (cidsBeanFromPointer == null) || cidsBeanFromPointer.isEmpty()) {
+        if (
+            (cidsBeanToPointer == null) ||
+            cidsBeanToPointer.isEmpty() ||
+            (cidsBeanFromPointer == null) ||
+            cidsBeanFromPointer.isEmpty()
+        ) {
             throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.rootNodeNotPermitted"));
         }
 
@@ -84,11 +83,11 @@ public class MoveOperation extends com.github.fge.jsonpatch.operation.MoveOperat
 
         final JsonNode value;
         if (CidsBean.class.isAssignableFrom(moveObject.getClass())) {
-            value = UTILS.cidsBeanToJsonNode((CidsBean)moveObject);
+            value = UTILS.cidsBeanToJsonNode((CidsBean) moveObject);
         } else if (List.class.isAssignableFrom(moveObject.getClass())) {
             value = JsonNodeFactory.instance.arrayNode();
-            for (final CidsBean listEntry : (List<CidsBean>)moveObject) {
-                ((ArrayNode)value).add(UTILS.cidsBeanToJsonNode(listEntry));
+            for (final CidsBean listEntry : (List<CidsBean>) moveObject) {
+                ((ArrayNode) value).add(UTILS.cidsBeanToJsonNode(listEntry));
             }
         } else {
             value = UTILS.getCidsBeanMapper().valueToTree(moveObject);

@@ -1,10 +1,11 @@
 package de.cismet.cids.jsonpatch;
 
+import static org.testng.Assert.*;
+
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import de.cismet.cids.dynamics.CidsBean;
 import java.util.List;
 import org.apache.commons.io.IOUtils;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -19,29 +20,21 @@ import org.testng.log4testng.Logger;
 @Test
 public class CidsBeanDeserialisationTest {
 
-    protected final static Logger LOGGER = Logger.getLogger(CidsBeanDeserialisationTest.class);
+    protected static final Logger LOGGER = Logger.getLogger(CidsBeanDeserialisationTest.class);
 
-    public CidsBeanDeserialisationTest() {
-
-    }
+    public CidsBeanDeserialisationTest() {}
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
-
-    }
+    public static void setUpClass() throws Exception {}
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
-
-    }
+    public static void tearDownClass() throws Exception {}
 
     @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
+    public void setUpMethod() throws Exception {}
 
     @AfterMethod
-    public void tearDownMethod() throws Exception {
-    }
+    public void tearDownMethod() throws Exception {}
 
     @Test
     public void createNewCidsBeanFromJSON() throws Exception {
@@ -53,24 +46,29 @@ public class CidsBeanDeserialisationTest {
 
             assertEquals(cidsBean.getProperty("representation[1].type.name"), "original data");
 
-            assertEquals("representation[0].type.name",
-                    CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
-                            new JsonPointer("/representation/0/type/name")));
+            assertEquals(
+                "representation[0].type.name",
+                CidsBeanPatchUtils
+                    .getInstance()
+                    .jsonPointerToCidsBeanPointer(new JsonPointer("/representation/0/type/name"))
+            );
 
-            assertEquals(cidsBean.getProperty("representation[1].type.name"),
-                    cidsBean.getProperty(CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
-                            new JsonPointer("/representation/1/type/name"))));
+            assertEquals(
+                cidsBean.getProperty("representation[1].type.name"),
+                cidsBean.getProperty(
+                    CidsBeanPatchUtils
+                        .getInstance()
+                        .jsonPointerToCidsBeanPointer(new JsonPointer("/representation/1/type/name"))
+                )
+            );
 
             assertTrue(((List) cidsBean.getProperty("representation[1].tags")).isEmpty());
 
             cidsBean.getMetaObject().getAttributeByFieldName("name").getMai().isForeignKey();
 
             LOGGER.debug(new JsonPointer("/"));
-            LOGGER.debug(CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(
-                    new JsonPointer("/")));
-
+            LOGGER.debug(CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(new JsonPointer("/")));
         } catch (Exception ex) {
-
             LOGGER.error(ex.getMessage(), ex);
             throw ex;
         }

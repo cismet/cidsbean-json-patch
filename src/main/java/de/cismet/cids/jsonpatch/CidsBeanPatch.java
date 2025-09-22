@@ -1,10 +1,10 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 /*
  * Copyright (c) 2014, Francis Galiegue (fgaliegue@gmail.com)
  *
@@ -29,19 +29,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
-
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.github.fge.jsonpatch.operation.*;
-
-import com.google.common.collect.ImmutableList;
-
-import java.io.IOException;
-
-import java.util.List;
-
 import de.cismet.cids.dynamics.CidsBean;
-
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * DOCUMENT ME!
@@ -67,7 +61,7 @@ public class CidsBeanPatch implements JsonSerializable {
      */
     @JsonCreator
     public CidsBeanPatch(final List<CidsBeanPatchOperation> operations) {
-        this.operations = ImmutableList.copyOf(operations);
+        this.operations = Collections.unmodifiableList(operations);
     }
 
     //~ Methods ----------------------------------------------------------------
@@ -96,8 +90,7 @@ public class CidsBeanPatch implements JsonSerializable {
     }
 
     @Override
-    public void serialize(final JsonGenerator jgen,
-            final SerializerProvider provider) throws IOException {
+    public void serialize(final JsonGenerator jgen, final SerializerProvider provider) throws IOException {
         jgen.writeStartArray();
         for (final JsonPatchOperation op : operations) {
             op.serialize(jgen, provider);
@@ -106,9 +99,11 @@ public class CidsBeanPatch implements JsonSerializable {
     }
 
     @Override
-    public void serializeWithType(final JsonGenerator jgen,
-            final SerializerProvider provider,
-            final TypeSerializer typeSer) throws IOException {
+    public void serializeWithType(
+        final JsonGenerator jgen,
+        final SerializerProvider provider,
+        final TypeSerializer typeSer
+    ) throws IOException {
         serialize(jgen, provider);
     }
 

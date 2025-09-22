@@ -1,27 +1,22 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 package de.cismet.cids.jsonpatch.operation.cidsbean;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonpatch.JsonPatchException;
-
-import org.apache.log4j.Logger;
-
-import java.util.List;
-import java.util.ResourceBundle;
-
 import de.cismet.cids.dynamics.CidsBean;
-
 import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
+import java.util.List;
+import java.util.ResourceBundle;
+import org.apache.log4j.Logger;
 
 /**
  * DOCUMENT ME!
@@ -29,8 +24,9 @@ import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
  * @author   Pascal Dihé <pascal.dihe@cismet.de>
  * @version  $Revision$, $Date$
  */
-public class RemoveOperation extends com.github.fge.jsonpatch.operation.RemoveOperation
-        implements CidsBeanPatchOperation {
+public class RemoveOperation
+    extends com.github.fge.jsonpatch.operation.RemoveOperation
+    implements CidsBeanPatchOperation {
 
     //~ Static fields/initializers ---------------------------------------------
 
@@ -80,7 +76,7 @@ public class RemoveOperation extends com.github.fge.jsonpatch.operation.RemoveOp
         }
 
         if (List.class.isAssignableFrom(parentObject.getClass())) {
-            final boolean removed = ((List)parentObject).remove(removeObject);
+            final boolean removed = ((List) parentObject).remove(removeObject);
             if (!removed) {
                 throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.removeFromArrayFailed"));
             }
@@ -90,11 +86,8 @@ public class RemoveOperation extends com.github.fge.jsonpatch.operation.RemoveOp
             try {
                 cidsBean.setProperty(cidsBeanPointer, null);
             } catch (Exception ex) {
-                LOGGER.error(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.removePropertyFailed")
-                            + ": " + cidsBeanPointer, ex);
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.removePropertyFailed"), ex);
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.removePropertyFailed") + ": " + cidsBeanPointer, ex);
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.removePropertyFailed"), ex);
             }
 
             return cidsBean;

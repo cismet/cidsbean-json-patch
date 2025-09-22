@@ -1,15 +1,14 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 package de.cismet.cids.jsonpatch;
 
 import Sirius.server.localserver.attribute.ObjectAttribute;
 import Sirius.server.middleware.types.MetaObject;
-
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,34 +20,28 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.ValueNode;
-
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jackson.jsonpointer.TokenResolver;
 import com.github.fge.jsonpatch.JsonPatchException;
-
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.io.WKTReader;
-
-import java.io.IOException;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
-
 import de.cismet.cids.dynamics.CidsBean;
 import de.cismet.cids.dynamics.CidsBeanInfo;
 import de.cismet.cids.dynamics.CidsBeanJsonDeserializer;
 import de.cismet.cids.dynamics.CidsBeanJsonSerializer;
-
 import de.cismet.cids.jsonpatch.operation.cidsbean.AddOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.CopyOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.MoveOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.RemoveOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.ReplaceOperation;
 import de.cismet.cids.jsonpatch.operation.cidsbean.TestOperation;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 /**
  * DOCUMENT ME!
@@ -67,7 +60,8 @@ public class CidsBeanPatchUtils {
     protected final ObjectMapper cidsBeanMapper = new ObjectMapper();
     protected final ObjectReader cidsBeanPatchReader;
     protected final ResourceBundle resourceBundle = PropertyResourceBundle.getBundle(
-            "de.cismet.cids.jsonpatch.messages");
+        "de.cismet.cids.jsonpatch.messages"
+    );
 
     //~ Constructors -----------------------------------------------------------
 
@@ -81,12 +75,13 @@ public class CidsBeanPatchUtils {
         regularModule.addDeserializer(CidsBean.class, new CidsBeanJsonDeserializer());
         this.cidsBeanMapper.registerModule(regularModule);
         this.cidsBeanMapper.registerSubtypes(
-            new NamedType(AddOperation.class, AddOperation.OPERATION_NAME),
-            new NamedType(CopyOperation.class, CopyOperation.OPERATION_NAME),
-            new NamedType(MoveOperation.class, MoveOperation.OPERATION_NAME),
-            new NamedType(RemoveOperation.class, RemoveOperation.OPERATION_NAME),
-            new NamedType(ReplaceOperation.class, ReplaceOperation.OPERATION_NAME),
-            new NamedType(TestOperation.class, TestOperation.OPERATION_NAME));
+                new NamedType(AddOperation.class, AddOperation.OPERATION_NAME),
+                new NamedType(CopyOperation.class, CopyOperation.OPERATION_NAME),
+                new NamedType(MoveOperation.class, MoveOperation.OPERATION_NAME),
+                new NamedType(RemoveOperation.class, RemoveOperation.OPERATION_NAME),
+                new NamedType(ReplaceOperation.class, ReplaceOperation.OPERATION_NAME),
+                new NamedType(TestOperation.class, TestOperation.OPERATION_NAME)
+            );
         this.cidsBeanPatchReader = this.cidsBeanMapper.reader().withType(CidsBeanPatch.class);
     }
 
@@ -125,8 +120,7 @@ public class CidsBeanPatchUtils {
             final int arrayIndex = arrayIndexFor(resolver.getToken().getRaw());
 
             if (arrayIndex != -1) {
-                if ((pathBuilder.length() > 0)
-                            && (pathBuilder.charAt(pathBuilder.length() - 1) == '.')) {
+                if ((pathBuilder.length() > 0) && (pathBuilder.charAt(pathBuilder.length() - 1) == '.')) {
                     pathBuilder.deleteCharAt(pathBuilder.length() - 1);
                 }
 
@@ -224,7 +218,7 @@ public class CidsBeanPatchUtils {
     public List<CidsBean> jsonNodeArrayToCidsBeanArray(final JsonNode node) throws JsonPatchException {
         if (this.isCidsBeanArray(node)) {
             final List<CidsBean> beanList = new ArrayList<CidsBean>();
-            final Iterator<JsonNode> nodeIterator = ((ArrayNode)node).elements();
+            final Iterator<JsonNode> nodeIterator = ((ArrayNode) node).elements();
             while (nodeIterator.hasNext()) {
                 final JsonNode arrayElementNode = nodeIterator.next();
                 beanList.add(this.jsonNodeToCidsBean(arrayElementNode));
@@ -306,9 +300,13 @@ public class CidsBeanPatchUtils {
      * @return  DOCUMENT ME!
      */
     public boolean isCidsBean(final JsonNode node) {
-        return node.isObject()
-                    && (node.hasNonNull(CidsBeanInfo.JSON_CIDS_OBJECT_KEY_IDENTIFIER)
-                        || node.hasNonNull(CidsBeanInfo.JSON_CIDS_OBJECT_KEY_REFERENCE_IDENTIFIER));
+        return (
+            node.isObject() &&
+            (
+                node.hasNonNull(CidsBeanInfo.JSON_CIDS_OBJECT_KEY_IDENTIFIER) ||
+                node.hasNonNull(CidsBeanInfo.JSON_CIDS_OBJECT_KEY_REFERENCE_IDENTIFIER)
+            )
+        );
     }
 
     /**
@@ -320,7 +318,7 @@ public class CidsBeanPatchUtils {
      */
     public boolean isCidsBeanArray(final JsonNode node) {
         if (node.isArray()) {
-            final Iterator<JsonNode> nodeIterator = ((ArrayNode)node).elements();
+            final Iterator<JsonNode> nodeIterator = ((ArrayNode) node).elements();
             while (nodeIterator.hasNext()) {
                 final JsonNode arrayElementNode = nodeIterator.next();
                 if (!this.isCidsBean(arrayElementNode)) {
@@ -357,8 +355,9 @@ public class CidsBeanPatchUtils {
     public Object deserializeAndVerifyCidsBean(final JsonNode value) throws JsonPatchException {
         if (this.isCidsBean(value)) {
             if (this.isCidsBeanReference(value)) {
-                final CidsBeanInfo cidsBeanInfo = new CidsBeanInfo(value.get(
-                            CidsBeanInfo.JSON_CIDS_OBJECT_KEY_REFERENCE_IDENTIFIER).textValue());
+                final CidsBeanInfo cidsBeanInfo = new CidsBeanInfo(
+                    value.get(CidsBeanInfo.JSON_CIDS_OBJECT_KEY_REFERENCE_IDENTIFIER).textValue()
+                );
                 if (cidsBeanInfo.getObjectKey().equals("-1") || (value.size() != 1)) {
                     throw new JsonPatchException(resourceBundle.getString("jsonPatch.valueNoReferenceBean"));
                 } else {
@@ -373,12 +372,12 @@ public class CidsBeanPatchUtils {
             }
         } else if (this.isCidsBeanArray(value)) {
             final List<CidsBean> beanList = new ArrayList<CidsBean>();
-            final Iterator<JsonNode> nodeIterator = ((ArrayNode)value).elements();
+            final Iterator<JsonNode> nodeIterator = ((ArrayNode) value).elements();
             while (nodeIterator.hasNext()) {
                 final JsonNode arrayElementNode = nodeIterator.next();
                 final Object arrayElement = this.deserializeAndVerifyCidsBean(arrayElementNode);
                 if ((arrayElement != null) && CidsBean.class.isAssignableFrom(arrayElement.getClass())) {
-                    final CidsBean cidsBean = (CidsBean)arrayElement;
+                    final CidsBean cidsBean = (CidsBean) arrayElement;
                     beanList.add(cidsBean);
                 } else {
                     throw new JsonPatchException(resourceBundle.getString("jsonPatch.invalidArrayElement"));
@@ -386,7 +385,7 @@ public class CidsBeanPatchUtils {
             }
             return beanList;
         } else if (value.isValueNode()) {
-            final ValueNode valueNode = (ValueNode)value;
+            final ValueNode valueNode = (ValueNode) value;
             return valueNode;
         } else {
             throw new JsonPatchException(resourceBundle.getString("jsonPatch.invalidValue"));
@@ -422,7 +421,7 @@ public class CidsBeanPatchUtils {
 
         for (final ObjectAttribute objectAttribute : metaObject.getAttribs()) {
             if (objectAttribute.referencesObject() && (objectAttribute.getValue() != null)) {
-                final MetaObject attributeMetaObject = (MetaObject)objectAttribute.getValue();
+                final MetaObject attributeMetaObject = (MetaObject) objectAttribute.getValue();
                 attributeMetaObject.setChanged(true);
                 this.applyMetaObjectUpdateStatus(attributeMetaObject, setChanged);
             }

@@ -18,22 +18,21 @@
  */
 package de.cismet.cids.jsonpatch;
 
+import static org.testng.Assert.*;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonpatch.JsonPatchException;
-import com.google.common.collect.Lists;
 import de.cismet.cids.dynamics.CidsBean;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static org.testng.Assert.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import org.testng.log4testng.Logger;
 
 @Test
@@ -42,13 +41,12 @@ public class CidsBeanPatchTestSuite {
     protected final JsonNode testNode;
     protected final ObjectReader reader;
 
-    protected final static Logger LOGGER = Logger.getLogger(CidsBeanPatchTestSuite.class);
+    protected static final Logger LOGGER = Logger.getLogger(CidsBeanPatchTestSuite.class);
 
-    protected final static ObjectMapper OBJECT_MAPPER = CidsBeanPatchUtils.getInstance().getCidsBeanMapper();
-    protected final static ResourceBundle RESOURCE_BUNDLE = CidsBeanPatchUtils.getInstance().getResourceBundle();
+    protected static final ObjectMapper OBJECT_MAPPER = CidsBeanPatchUtils.getInstance().getCidsBeanMapper();
+    protected static final ResourceBundle RESOURCE_BUNDLE = CidsBeanPatchUtils.getInstance().getResourceBundle();
 
-    public CidsBeanPatchTestSuite()
-            throws IOException {
+    public CidsBeanPatchTestSuite() throws IOException {
         testNode = JsonLoader.fromResource("/de/cismet/cids/jsonpatch/testsuite.json");
         reader = CidsBeanPatchUtils.getInstance().getCidsBeanPatchReader();
 
@@ -56,9 +54,8 @@ public class CidsBeanPatchTestSuite {
     }
 
     @DataProvider
-    public Iterator<Object[]> getTests()
-            throws Exception {
-        final List<Object[]> list = Lists.newArrayList();
+    public Iterator<Object[]> getTests() throws Exception {
+        final List<Object[]> list = new ArrayList<>();
 
         String comment = null;
         boolean valid;
@@ -72,25 +69,27 @@ public class CidsBeanPatchTestSuite {
                     continue;
                 }
 
-                comment = element.hasNonNull("comment") ? element.get("comment").textValue()
+                comment =
+                    element.hasNonNull("comment")
+                        ? element.get("comment").textValue()
                         : (element.hasNonNull("error") ? element.get("error").textValue() : ("patch #" + i));
 
                 patch = reader.readValue((element.get("patch")));
 
                 bean = OBJECT_MAPPER.treeToValue(element.get("bean"), CidsBean.class);
 
-                expected = element.hasNonNull("expected") ? OBJECT_MAPPER.treeToValue(element.get("expected"), CidsBean.class) : null;
+                expected =
+                    element.hasNonNull("expected")
+                        ? OBJECT_MAPPER.treeToValue(element.get("expected"), CidsBean.class)
+                        : null;
 
                 if (expected == null) {
                     expected = bean;
                 }
                 valid = !element.has("error");
-                list.add(new Object[]{comment, bean, patch, expected, valid});
-
+                list.add(new Object[] { comment, bean, patch, expected, valid });
             } catch (Exception ex) {
-                LOGGER.error("cannot deserialize beans for patch #" + i + " ("
-                        + comment + "): "
-                        + ex.getMessage(), ex);
+                LOGGER.error("cannot deserialize beans for patch #" + i + " (" + comment + "): " + ex.getMessage(), ex);
                 throw ex;
             } finally {
                 i++;
@@ -101,8 +100,13 @@ public class CidsBeanPatchTestSuite {
     }
 
     @Test(dataProvider = "getTests")
-    public void testsFromTestSuitePass(final String comment, final CidsBean bean,
-            final CidsBeanPatch patch, final CidsBean expected, final boolean valid) {
+    public void testsFromTestSuitePass(
+        final String comment,
+        final CidsBean bean,
+        final CidsBeanPatch patch,
+        final CidsBean expected,
+        final boolean valid
+    ) {
         try {
             final CidsBean actual = patch.apply(bean);
             if (!valid) {
@@ -114,7 +118,6 @@ public class CidsBeanPatchTestSuite {
             final String expectedString = expected.toJSONString(true);
 
             assertEquals(actualString, expectedString);
-
         } catch (AssertionError ae) {
             LOGGER.error(comment + "test failed with: " + ae.getMessage());
             throw ae;
