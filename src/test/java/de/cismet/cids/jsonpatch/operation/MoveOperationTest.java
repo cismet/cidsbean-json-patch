@@ -24,12 +24,9 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 @Test
-public final class MoveOperationTest
-    extends CidsBeanPatchOperationTest
-{
-    public MoveOperationTest()
-        throws IOException
-    {
+public final class MoveOperationTest extends CidsBeanPatchOperationTest {
+
+    public MoveOperationTest() throws IOException {
         super(MoveOperation.OPERATION_NAME);
     }
 }

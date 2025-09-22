@@ -1,10 +1,10 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 /*
  * Copyright (c) 2014, Francis Galiegue (fgaliegue@gmail.com)
  *
@@ -26,38 +26,28 @@
 package de.cismet.cids.jsonpatch.operation.cidsbean;
 
 import Sirius.server.localserver.attribute.ObjectAttribute;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.NullNode;
 import com.fasterxml.jackson.databind.node.ValueNode;
-
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jackson.jsonpointer.TokenResolver;
 import com.github.fge.jsonpatch.JsonPatchException;
-
-import com.google.common.collect.Iterables;
-
 import com.vividsolutions.jts.geom.Geometry;
-
-import org.apache.log4j.Logger;
-
-import java.math.BigDecimal;
-
-import java.sql.Timestamp;
-
-import java.util.List;
-import java.util.ListIterator;
-import java.util.ResourceBundle;
-
 import de.cismet.cids.dynamics.CidsBean;
-
 import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
-
 import de.cismet.commons.classloading.BlacklistClassloading;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
+import java.util.ResourceBundle;
+import org.apache.log4j.Logger;
 
 /**
  * DOCUMENT ME!
@@ -74,9 +64,11 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
 
     //~ Instance fields --------------------------------------------------------
 
-    @JsonIgnore protected final com.github.fge.jsonpatch.operation.ReplaceOperation jsonPatchReplaceOperation;
+    @JsonIgnore
+    protected final com.github.fge.jsonpatch.operation.ReplaceOperation jsonPatchReplaceOperation;
 
-    @JsonIgnore protected final boolean overwrite;
+    @JsonIgnore
+    protected final boolean overwrite;
 
     //~ Constructors -----------------------------------------------------------
 
@@ -87,8 +79,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
      * @param  value  DOCUMENT ME!
      */
     @JsonCreator
-    public AddOperation(@JsonProperty("path") final JsonPointer path,
-            @JsonProperty("value") final JsonNode value) {
+    public AddOperation(@JsonProperty("path") final JsonPointer path, @JsonProperty("value") final JsonNode value) {
         this(path, value, false);
     }
 
@@ -119,6 +110,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
             return super.apply(node);
         }
     }
+
     @Override
     public CidsBean apply(final CidsBean cidsBean) throws JsonPatchException {
         if ((this.value == null) || this.value.isMissingNode()) {
@@ -148,10 +140,10 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug("performing add to array " + this.path.toString());
             }
-            this.addToArray((List)parentObject);
+            this.addToArray((List) parentObject);
             return cidsBean;
         } else if (CidsBean.class.isAssignableFrom(parentObject.getClass())) {
-            this.addToObject((CidsBean)parentObject);
+            this.addToObject((CidsBean) parentObject);
             return cidsBean;
         } else {
             throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.parentNotContainer"));
@@ -166,17 +158,21 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
      * @throws  JsonPatchException  DOCUMENT ME!
      */
     protected void addToArray(final List parentList) throws JsonPatchException {
-        final TokenResolver<JsonNode> token = Iterables.getLast(path);
+        final TokenResolver<JsonNode> token = getLast(path);
         if (token.getToken().equals(LAST_ARRAY_ELEMENT)) {
             if (UTILS.isCidsBeanArray(value)) {
-                final List<CidsBean> beanList = (List<CidsBean>)UTILS.deserializeAndVerifyCidsBean(this.value);
+                final List<CidsBean> beanList = (List<CidsBean>) UTILS.deserializeAndVerifyCidsBean(this.value);
                 if (this.overwrite) {
                     final ListIterator<CidsBean> listIterator = parentList.listIterator();
                     while (listIterator.hasNext()) {
                         final CidsBean listCidsBean = listIterator.next();
                         for (final CidsBean replacmentBean : beanList) {
-                            if (replacmentBean.getCidsBeanInfo().getJsonObjectKey().equals(
-                                            listCidsBean.getCidsBeanInfo().getJsonObjectKey())) {
+                            if (
+                                replacmentBean
+                                    .getCidsBeanInfo()
+                                    .getJsonObjectKey()
+                                    .equals(listCidsBean.getCidsBeanInfo().getJsonObjectKey())
+                            ) {
                                 listIterator.set(replacmentBean);
                             }
                         }
@@ -185,13 +181,17 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                     parentList.addAll(beanList);
                 }
             } else if (UTILS.isCidsBean(value)) {
-                final CidsBean cidsBean = (CidsBean)UTILS.deserializeAndVerifyCidsBean(this.value);
+                final CidsBean cidsBean = (CidsBean) UTILS.deserializeAndVerifyCidsBean(this.value);
                 if (this.overwrite) {
                     final ListIterator<CidsBean> listIterator = parentList.listIterator();
                     while (listIterator.hasNext()) {
                         final CidsBean listCidsBean = listIterator.next();
-                        if (cidsBean.getCidsBeanInfo().getJsonObjectKey().equals(
-                                        listCidsBean.getCidsBeanInfo().getJsonObjectKey())) {
+                        if (
+                            cidsBean
+                                .getCidsBeanInfo()
+                                .getJsonObjectKey()
+                                .equals(listCidsBean.getCidsBeanInfo().getJsonObjectKey())
+                        ) {
                             listIterator.set(cidsBean);
                         }
                     }
@@ -207,38 +207,66 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
             try {
                 index = Integer.parseInt(token.toString());
             } catch (NumberFormatException ex) {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.notAnIndex")
-                            + ": " + ex.getMessage(), ex);
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.notAnIndex"), ex);
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.notAnIndex") + ": " + ex.getMessage(), ex);
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.notAnIndex"), ex);
             }
 
             if ((index < 0) || (index > size)) {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.notAnIndex")
-                            + ": " + index + " (array size: " + size + ")");
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.noSuchIndex"));
+                LOGGER.error(
+                    RESOURCE_BUNDLE.getString("jsonPatch.notAnIndex") + ": " + index + " (array size: " + size + ")"
+                );
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.noSuchIndex"));
             }
 
             if (UTILS.isCidsBean(value)) {
-                final CidsBean cidsBean = (CidsBean)UTILS.deserializeAndVerifyCidsBean(this.value);
+                final CidsBean cidsBean = (CidsBean) UTILS.deserializeAndVerifyCidsBean(this.value);
                 if (this.overwrite) {
                     parentList.set(index, cidsBean);
                 } else {
                     parentList.add(index, cidsBean);
                 }
             } else if (UTILS.isCidsBeanArray(value)) {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex")
-                            + ": arrays cannot be used as value in conjunction with an array index");
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.invalidValueForArrayIndex"));
+                LOGGER.error(
+                    RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex") +
+                    ": arrays cannot be used as value in conjunction with an array index"
+                );
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex"));
             } else {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex")
-                            + ": " + value);
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.invalidValueForArrayIndex"));
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex") + ": " + value);
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.invalidValueForArrayIndex"));
             }
         }
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   <T>       DOCUMENT ME!
+     * @param   iterable  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     *
+     * @throws  NoSuchElementException  DOCUMENT ME!
+     */
+    public static <T> T getLast(final Iterable<T> iterable) {
+        if (iterable instanceof List) {
+            final List<T> list = (List<T>) iterable;
+            if (list.isEmpty()) {
+                throw new NoSuchElementException();
+            }
+            return list.get(list.size() - 1);
+        }
+
+        final Iterator<T> it = iterable.iterator();
+        if (!it.hasNext()) {
+            throw new NoSuchElementException();
+        }
+
+        T last = it.next();
+        while (it.hasNext()) {
+            last = it.next();
+        }
+        return last;
     }
 
     /**
@@ -249,80 +277,77 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
      * @throws  JsonPatchException  DOCUMENT ME!
      */
     protected void addToObject(final CidsBean parentBean) throws JsonPatchException {
-        final String property = Iterables.getLast(path).getToken().getRaw();
+        final String property = getLast(path).getToken().getRaw();
 
         final ObjectAttribute objectAttribute = parentBean.getMetaObject().getAttributeByFieldName(property);
         if (objectAttribute == null) {
-            LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty")
-                        + ": " + this.path.toString());
-            throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                    "jsonPatch.noSuchProperty"));
+            LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty") + ": " + this.path.toString());
+            throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty"));
         }
 
         final Object valueObject = UTILS.deserializeAndVerifyCidsBean(this.value);
         if (CidsBean.class.isAssignableFrom(valueObject.getClass())) {
             if (!objectAttribute.getMai().isForeignKey()) {
-                LOGGER.error(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.propertyValueMissmatch") + ": "
-                            + "cids bean provided but not expected at " + this.path.toString());
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.propertyValueMissmatch"));
+                LOGGER.error(
+                    RESOURCE_BUNDLE.getString("jsonPatch.propertyValueMissmatch") +
+                    ": " +
+                    "cids bean provided but not expected at " +
+                    this.path.toString()
+                );
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.propertyValueMissmatch"));
             }
 
             if (!this.overwrite && (parentBean.getProperty(property) != null)) {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty")
-                            + ": " + property);
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.propertyNotEmpty"));
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty") + ": " + property);
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty"));
             }
 
             try {
-                parentBean.setProperty(property, (CidsBean)valueObject);
+                parentBean.setProperty(property, (CidsBean) valueObject);
             } catch (Exception ex) {
-                LOGGER.error(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.setPropertyFailed")
-                            + ": " + property, ex);
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.setPropertyFailed"), ex);
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.setPropertyFailed") + ": " + property, ex);
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.setPropertyFailed"), ex);
             }
         } else if (List.class.isAssignableFrom(valueObject.getClass())) {
             final List<CidsBean> beanCollectionProperty = parentBean.getBeanCollectionProperty(property);
             if (!objectAttribute.getMai().isArray() || (beanCollectionProperty == null)) {
-                LOGGER.error(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.propertyValueMissmatch") + ": "
-                            + "cids bean array provided but not expected at " + this.path.toString());
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.propertyValueMissmatch"));
+                LOGGER.error(
+                    RESOURCE_BUNDLE.getString("jsonPatch.propertyValueMissmatch") +
+                    ": " +
+                    "cids bean array provided but not expected at " +
+                    this.path.toString()
+                );
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.propertyValueMissmatch"));
             }
 
             if (!this.overwrite && !beanCollectionProperty.isEmpty()) {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty")
-                            + ": array " + property + "size: " + beanCollectionProperty.size());
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.propertyNotEmpty"));
+                LOGGER.error(
+                    RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty") +
+                    ": array " +
+                    property +
+                    "size: " +
+                    beanCollectionProperty.size()
+                );
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty"));
             } else if (this.overwrite) {
                 beanCollectionProperty.clear();
-                beanCollectionProperty.addAll((List<CidsBean>)valueObject);
+                beanCollectionProperty.addAll((List<CidsBean>) valueObject);
             } else {
-                beanCollectionProperty.addAll((List<CidsBean>)valueObject);
+                beanCollectionProperty.addAll((List<CidsBean>) valueObject);
             }
         } else if (ValueNode.class.isAssignableFrom(valueObject.getClass())) {
             if (!this.overwrite && (parentBean.getProperty(property) != null)) {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty")
-                            + ": " + property);
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.propertyNotEmpty"));
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty") + ": " + property);
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.propertyNotEmpty"));
             }
 
             final Class attrClass = BlacklistClassloading.forName(objectAttribute.getMai().getJavaclassname());
             if (attrClass == null) {
-                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty")
-                            + ": " + this.path.toString());
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.noSuchProperty"));
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty") + ": " + this.path.toString());
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.noSuchProperty"));
             }
 
-            final ValueNode valueNode = (ValueNode)valueObject;
+            final ValueNode valueNode = (ValueNode) valueObject;
 
             try {
                 if (valueNode.isNumber()) {
@@ -333,7 +358,7 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                         final long l = valueNode.asLong();
                         parentBean.setProperty(property, l);
                     } else if (attrClass.equals(Float.class)) {
-                        final float f = (float)valueNode.asDouble();
+                        final float f = (float) valueNode.asDouble();
                         parentBean.setProperty(property, f);
                     } else if (attrClass.equals(Double.class)) {
                         final double d = valueNode.asDouble();
@@ -367,11 +392,8 @@ public class AddOperation extends com.github.fge.jsonpatch.operation.AddOperatio
                     throw new Exception("no handler available for value " + valueNode.toString());
                 }
             } catch (Exception ex) {
-                LOGGER.error(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.setPropertyFailed")
-                            + ": " + property, ex);
-                throw new JsonPatchException(RESOURCE_BUNDLE.getString(
-                        "jsonPatch.setPropertyFailed"), ex);
+                LOGGER.error(RESOURCE_BUNDLE.getString("jsonPatch.setPropertyFailed") + ": " + property, ex);
+                throw new JsonPatchException(RESOURCE_BUNDLE.getString("jsonPatch.setPropertyFailed"), ex);
             }
         }
     }

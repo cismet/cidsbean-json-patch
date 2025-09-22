@@ -22,7 +22,7 @@
     <parent>
         <groupId>de.cismet</groupId>
         <artifactId>cismet-parent</artifactId>
-        <version>9.0</version>
+        <version>10.0</version>
     </parent>
     
     <groupId>de.cismet.cids</groupId>
@@ -64,7 +64,7 @@
             <dependency>
                 <groupId>de.cismet</groupId>
                 <artifactId>cismet-ext-bom</artifactId>
-                <version>9.0</version>
+                <version>10.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -125,6 +125,7 @@
         <dependency>
             <groupId>de.cismet.cids</groupId>
             <artifactId>cids-server-rest-types</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>de.cismet</groupId>
@@ -173,13 +174,9 @@
             <version>1.8</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>16.0.1</version>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+            <scope>test</scope>
         </dependency>
         
         <!-- BEGIN: Test dependencies -->

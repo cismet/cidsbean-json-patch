@@ -24,12 +24,9 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 @Test
-public final class ReplaceOperationTest
-    extends CidsBeanPatchOperationTest
-{
-    public ReplaceOperationTest()
-        throws IOException
-    {
+public final class ReplaceOperationTest extends CidsBeanPatchOperationTest {
+
+    public ReplaceOperationTest() throws IOException {
         super(ReplaceOperation.OPERATION_NAME);
     }
 }

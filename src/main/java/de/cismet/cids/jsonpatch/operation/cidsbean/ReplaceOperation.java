@@ -1,22 +1,19 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 package de.cismet.cids.jsonpatch.operation.cidsbean;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
-
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonpatch.JsonPatchException;
-
 import de.cismet.cids.dynamics.CidsBean;
-
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
 
 /**
@@ -25,12 +22,14 @@ import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
  * @author   Pascal Dihé <pascal.dihe@cismet.de>
  * @version  $Revision$, $Date$
  */
-public class ReplaceOperation extends com.github.fge.jsonpatch.operation.ReplaceOperation
-        implements CidsBeanPatchOperation {
+public class ReplaceOperation
+    extends com.github.fge.jsonpatch.operation.ReplaceOperation
+    implements CidsBeanPatchOperation {
 
     //~ Instance fields --------------------------------------------------------
 
-    @JsonIgnore protected final AddOperation replaceOperationDelegate;
+    @JsonIgnore
+    protected final AddOperation replaceOperationDelegate;
 
     //~ Constructors -----------------------------------------------------------
 
@@ -41,8 +40,7 @@ public class ReplaceOperation extends com.github.fge.jsonpatch.operation.Replace
      * @param  value  DOCUMENT ME!
      */
     @JsonCreator
-    public ReplaceOperation(@JsonProperty("path") final JsonPointer path,
-            @JsonProperty("value") final JsonNode value) {
+    public ReplaceOperation(@JsonProperty("path") final JsonPointer path, @JsonProperty("value") final JsonNode value) {
         super(path, value);
         replaceOperationDelegate = new AddOperation(path, value, true);
     }

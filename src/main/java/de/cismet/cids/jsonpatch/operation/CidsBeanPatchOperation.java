@@ -1,10 +1,10 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 /*
  * Copyright (c) 2014, Francis Galiegue (fgaliegue@gmail.com)
  *
@@ -27,11 +27,9 @@ package de.cismet.cids.jsonpatch.operation;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.github.fge.jsonpatch.operation.JsonPatchOperation;
 import com.github.fge.jsonpatch.operation.PathValueOperation;
-
 import de.cismet.cids.dynamics.CidsBean;
 
 /**
@@ -49,14 +47,9 @@ import de.cismet.cids.dynamics.CidsBean;
  * @version  $Revision$, $Date$
  */
 
-@JsonTypeInfo(
-    use = JsonTypeInfo.Id.NAME,
-    include = JsonTypeInfo.As.PROPERTY,
-    property = "op"
-)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "op")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public interface CidsBeanPatchOperation extends JsonPatchOperation {
-
     //~ Methods ----------------------------------------------------------------
 
     /**

@@ -1,26 +1,22 @@
 /***************************************************
-*
-* cismet GmbH, Saarbruecken, Germany
-*
-*              ... and it just works.
-*
-****************************************************/
+ *
+ * cismet GmbH, Saarbruecken, Germany
+ *
+ *              ... and it just works.
+ *
+ ****************************************************/
 package de.cismet.cids.jsonpatch.operation.cidsbean;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
-
 import com.github.fge.jackson.JsonNumEquals;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonpatch.JsonPatchException;
-
-import java.util.ResourceBundle;
-
 import de.cismet.cids.dynamics.CidsBean;
-
 import de.cismet.cids.jsonpatch.CidsBeanPatchUtils;
 import de.cismet.cids.jsonpatch.operation.CidsBeanPatchOperation;
+import java.util.ResourceBundle;
 
 /**
  * JSON Patch {@code test} operation.
@@ -50,8 +46,7 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
      * @param  value  DOCUMENT ME!
      */
     @JsonCreator
-    public TestOperation(@JsonProperty("path") final JsonPointer path,
-            @JsonProperty("value") final JsonNode value) {
+    public TestOperation(@JsonProperty("path") final JsonPointer path, @JsonProperty("value") final JsonNode value) {
         super(path, value);
     }
 
@@ -67,26 +62,25 @@ public class TestOperation extends com.github.fge.jsonpatch.operation.TestOperat
         } else {
             return null;
         }
-
-//        final String cidsBeanPointer = CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(this.path);
-//        final Object tested;
-//        if(cidsBeanPointer != null && !cidsBeanPointer.isEmpty()) {
-//            tested =  cidsBean.getProperty(cidsBeanPointer);
-//        } else {
-//            tested = cidsBean;
-//        }
-//
-//        if(tested == null) {
-//            throw new JsonPatchException("jsonPatch.noSuchPath");
-//        }
-//
-//        final JsonNode testedNode = CidsBeanPatchUtils.getInstance().getCidsBeanMapper().valueToTree(value);
-//
-//
-//        if (!tested.equals(value))
-//            throw new JsonPatchException(
-//                "jsonPatch.valueTestFailure");
-//
-//        return null;
+        //        final String cidsBeanPointer = CidsBeanPatchUtils.getInstance().jsonPointerToCidsBeanPointer(this.path);
+        //        final Object tested;
+        //        if(cidsBeanPointer != null && !cidsBeanPointer.isEmpty()) {
+        //            tested =  cidsBean.getProperty(cidsBeanPointer);
+        //        } else {
+        //            tested = cidsBean;
+        //        }
+        //
+        //        if(tested == null) {
+        //            throw new JsonPatchException("jsonPatch.noSuchPath");
+        //        }
+        //
+        //        final JsonNode testedNode = CidsBeanPatchUtils.getInstance().getCidsBeanMapper().valueToTree(value);
+        //
+        //
+        //        if (!tested.equals(value))
+        //            throw new JsonPatchException(
+        //                "jsonPatch.valueTestFailure");
+        //
+        //        return null;
     }
 }
