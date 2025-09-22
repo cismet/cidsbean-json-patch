@@ -19,18 +19,14 @@
 
 package de.cismet.cids.jsonpatch.operation;
 
-
 import de.cismet.cids.jsonpatch.operation.cidsbean.CopyOperation;
 import java.io.IOException;
 import org.testng.annotations.Test;
 
 @Test
-public final class CopyOperationTest
-    extends CidsBeanPatchOperationTest
-{
-    public CopyOperationTest()
-        throws IOException
-    {
+public final class CopyOperationTest extends CidsBeanPatchOperationTest {
+
+    public CopyOperationTest() throws IOException {
         super(CopyOperation.OPERATION_NAME);
     }
 }
